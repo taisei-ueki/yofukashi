@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   end
   
   namespace :public do
+    resources :users, only: [:show,:edit,:update]
+    
+    resources :posts do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
 
 end
