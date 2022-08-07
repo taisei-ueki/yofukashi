@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_072150) do
+ActiveRecord::Schema.define(version: 2022_08_07_081823) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,74 @@ ActiveRecord::Schema.define(version: 2022_08_06_072150) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jenres", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_category_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_post_category_relations_on_category_id"
+    t.index ["post_id"], name: "index_post_category_relations_on_post_id"
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.text "comment", default: "", null: false
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_jenre_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "jenre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["jenre_id"], name: "index_post_jenre_relations_on_jenre_id"
+    t.index ["post_id"], name: "index_post_jenre_relations_on_post_id"
+  end
+
+  create_table "post_place_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "place_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_post_place_relations_on_place_id"
+    t.index ["post_id"], name: "index_post_place_relations_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "body", default: "", null: false
+    t.string "address", default: "", null: false
+    t.integer "user_id", null: false
+    t.integer "price_status", default: 0, null: false
+    t.integer "parking_status", default: 0, null: false
+    t.float "all_rate", null: false
+    t.float "rush_rate", null: false
+    t.float "relax_rate", null: false
+    t.float "beautiful_rate", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +136,10 @@ ActiveRecord::Schema.define(version: 2022_08_06_072150) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_category_relations", "categories"
+  add_foreign_key "post_category_relations", "posts"
+  add_foreign_key "post_jenre_relations", "jenres"
+  add_foreign_key "post_jenre_relations", "posts"
+  add_foreign_key "post_place_relations", "places"
+  add_foreign_key "post_place_relations", "posts"
 end

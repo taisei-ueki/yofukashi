@@ -1,0 +1,2 @@
+class Jenre < ApplicationRecord
+end
