@@ -1,11 +1,28 @@
-<br/>
-<div class="row">
-  <%= link_to 'Log in',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-</div>
-<div class="row">
-  <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-</div>
-
-<div>
-  <%= link_to 'about',about_path, class: 'nav-link text-dark'%>
-</div>
+<header>
+  <!--ユーザのヘッダー-->
+  <% if user_signed_in? %>
+    <ul>
+      <li>ようこそ、<%= current_user.name %>さん！</li>
+      
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      
+      <li><%= link_to "マイページ", public_user_path(current_user) %></li>
+      
+      <li><%= link_to "投稿",public_posts_path %></li>
+    </ul>
+  <!--アドミンのヘッダー-->
+  <% elsif admin_signed_in? %>
+    <ul>
+      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+    </ul>
+  <!--ゲストのヘッダー-->
+  <% else %>
+    <ul>
+      <li><%= link_to 'ログイン',new_user_session_path %></li>
+      
+      <li><%= link_to 'サインイン',new_user_registration_path %></li>
+      
+      <li><%= link_to 'about',about_path%></li>
+    </ul>
+  <% end %>
+</header>

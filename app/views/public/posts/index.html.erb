@@ -1,2 +1,35 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<p>投稿一覧</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>title</th>
+      <th>body</th>
+      <th>adress</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <% if post.main_images.attached? %>
+          <% post.main_images.each do |post| %>
+            <%= image_tag main_images.variant(resize_to_limit: [100, 100]) %>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= post.title %></td>
+      <td><%= post.body %></td>
+      <td><%= post.adress %></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to "投稿する",new_public_post_path %>
+</div>

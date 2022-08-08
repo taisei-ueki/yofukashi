@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
   
   def after_sign_in_path_for(resource)
-    user_show_path
+    public_user_path
   end
   
   def configure_permitted_parameters
