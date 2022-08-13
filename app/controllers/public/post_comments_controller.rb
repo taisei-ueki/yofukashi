@@ -5,7 +5,7 @@ class Public::PostCommentsController < ApplicationController
 	   comment = current_user.post_comments.new(post_comment_params)
 	   comment.post_id = @post.id
 	   if comment.save
-	   	redirect_to post_path(@post), notice: 'コメントを投稿しました'
+	   	redirect_to public_post_path(@post), notice: 'コメントを投稿しました'
 	   else
 	   	render :comment
 	   end
@@ -20,6 +20,6 @@ class Public::PostCommentsController < ApplicationController
 	 private
 	 
 	 def post_comment_params
-	 	params.require(:post_comment).permit(:comment)
+	 	params.permit(:comment)
 	 end
 end

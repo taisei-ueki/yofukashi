@@ -18,7 +18,7 @@
         <%= link_to public_post_path(post.id) do %>
           <% if post.main_images.attached? %>
             <% post.main_images.each do |main_image| %>
-              <%= image_tag main_image.variant(resize: [200, 200]) %>
+              <%= image_tag main_image.variant(resize_to_limit: [100, 100]) %>
             <% end %>
           <% end %>
         <% end %>

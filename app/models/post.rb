@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   
    # categoryテーブルへの関連付け
   has_many :post_category_relations, dependent: :destroy
-  has_many :category, through: :post_category_relations, dependent: :destroy
+  has_many :categories, through: :post_category_relations, dependent: :destroy
   
   validates :title,presence:true
   validates :body, presence:true,length:{maximum:200}
