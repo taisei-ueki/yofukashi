@@ -1,2 +1,94 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<h2>投稿詳細</h2>
+
+<table>
+  <tr>
+    <td>
+      <% if @post.main_images.attached? %>
+        <% @post.main_images.each do |main_image| %>
+          <%= image_tag main_image.variant(resize: [200, 200]) %>
+        <% end %>
+      <% end %>
+    </td>
+    <td><%= @post.title %></td>
+    <td><%= @post.body %></td>
+    <td><%= @post.address %></td>
+    
+    <% if @post.user == current_user %>
+      <td><button><%= link_to "編集", edit_public_post_path(@post) %></button></td>
+      <td><button><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button></td>
+    <% else %>
+      <td></td>
+      <td></td>
+    <% end %>
+    
+    <!--レビュー機能-->
+    <td><div id="star-all-rate<%= @post.id%>"></div></td>
+    <td><div id="star-rush-rate<%= @post.id%>"></div></td>
+    <td><div id="star-relax-rate<%= @post.id%>"></div></td>
+    <td><div id="star-beautiful-rate<%= @post.id%>"></div></td>
+    
+  </tr>
+</table>
+
+<!--コメント機能-->
+<div class="new-comment">
+  <%= form_with url: public_post_post_comments_path(@post) do |f| %>
+    <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>  
+</div>
+
+<!--コメント一覧-->
+<div class="comments">
+  <% if @post.post_comments.present? %>
+  <p>コメント件数：<%= @post.post_comments.count %></p>
+    <%= @post.post_comments.each do |post_comment| %>
+      <%= post_comment.user.name %>
+      <%= post_comment.created_at.strftime('%Y?%m?%d') %>
+      <%= post_comment.comment %>
+      <% if post_comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+      </div>
+      <% end %>
+    <% end %>
+  <% else %>
+  <p>コメントはまだありません</p>
+  <% end %>
+</div>
+
+<!--レビュー機能JavaScript-->
+     <script>
+        $('#star-all-rate<%= @post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= @post.all_rate %>,
+        });
+         $('#star-rush-rate<%= @post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= @post.rush_rate %>,
+        });
+         $('#star-relax-rate<%= @post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= @post.relax_rate %>,
+        });
+         $('#star-beautiful-rate<%= @post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= @post.beautiful_rate %>,
+        });
+      </script>

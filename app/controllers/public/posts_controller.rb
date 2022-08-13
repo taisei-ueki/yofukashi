@@ -5,6 +5,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_comment = PostComment.new
     
   end
 
@@ -38,13 +39,13 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to public_posts_path
+    redirect_to public_posts_path(@posts)
   end
   
   private
   
   def post_params
-    params.require(:post).permit(:title,:body,:adress, main_images: [])
+    params.require(:post).permit(:title,:body,:address,:all_rate,:rush_rate,:relax_rate,:beautiful_rate, main_images: [])
   end
   
 end

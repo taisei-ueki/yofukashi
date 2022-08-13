@@ -1,2 +1,73 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<h1>編集フォーム</h1>
+<%= form_with model: @post,url: public_post_path, method: :patch do |f| %>
+
+  <%= f.label :main_images ,'画像' %>
+  <%= f.file_field :main_images, multiple: true %>
+  
+  <%= f.label :title ,'タイトル' %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :body ,'紹介文' %>
+  <%= f.text_area :body %>
+  
+  <%= f.label :address ,'所在地' %>
+  <%= f.text_field :address %>
+  
+  <div class="field" id="all_rate_star">
+    <%= f.label :all_rate, '満足度' %>
+    <%= f.hidden_field :all_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="rush_rate_star">
+    <%= f.label :rush_rate, '混み具合' %>
+    <%= f.hidden_field :rush_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="relax_rate_star">
+  <%= f.label :relax_rate, '安らぎ' %>
+  <%= f.hidden_field :relax_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="beautiful_rate_star">
+  <%= f.label :beautiful_rate, '綺麗さ' %>
+  <%= f.hidden_field :beautiful_rate, id: :review_star %>
+  </div>
+
+<%= f.submit '編集完了' %>
+<% end %>
+
+<!-- 評価javascript -->
+  <script>
+  $('#all_rate_star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[all_rate]',
+    half: true,
+  });
+  $('#rush_rate_star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[rush_rate]',
+    half: true,
+  });
+   $('#relax_rate_star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[relax_rate]',
+    half: true,
+  });
+   $('#beautiful_rate_star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[beautiful_rate]',
+    half: true,
+  });
+  </script>  
