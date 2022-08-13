@@ -30,6 +30,21 @@
   </tr>
 </table>
 
+<!--タグ関連-->
+    <div class="tag">
+      <% @post.jenres.each do |jenre| %>
+       <span><%= jenre.name %></span>
+      <% end %>
+      
+      <% @post.places.each do |place| %>
+       <span><%= place.name %></span>
+      <% end %>
+      
+      <% @post.category.each do |category| %>
+       <span><%= category.name %></span>
+      <% end %>
+    </div>
+
 <!--コメント機能-->
 <div class="new-comment">
   <%= form_with url: public_post_post_comments_path(@post) do |f| %>

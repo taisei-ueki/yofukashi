@@ -13,6 +13,39 @@
   <%= f.label :address ,'所在地' %>
   <%= f.text_field :address %>
   
+ <div class='form-group'>
+  <%= f.collection_check_boxes(:jenre_ids, Jenre.all, :id, :name) do |jenre| %>
+    <div class='form-check'>
+      <%= jenre.label do %>
+        <%= jenre.check_box %>
+        <%= jenre.text %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  
+  <div class='form-group'>
+  <%= f.collection_check_boxes(:place_ids, Place.all, :id, :name) do |place| %>
+    <div class='form-check'>
+      <%= place.label do %>
+        <%= place.check_box %>
+        <%= place.text %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  
+  <div class='form-group'>
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
+    <div class='form-check'>
+      <%= category.label do %>
+        <%= category.check_box %>
+        <%= category.text %>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+  
   <div class="field" id="all_rate_star">
     <%= f.label :all_rate, '満足度' %>
     <%= f.hidden_field :all_rate, id: :review_star %>

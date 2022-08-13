@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:title,:body,:address,:all_rate,:rush_rate,:relax_rate,:beautiful_rate, main_images: [])
+    params.require(:post).permit(:title,:body,:address,:all_rate,:rush_rate,:relax_rate,:beautiful_rate,jenre_ids: [],place_ids: [],category_ids: [], main_images: [])
   end
   
 end
