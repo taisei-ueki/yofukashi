@@ -1,0 +1,2 @@
+module Post::SearchesHelper
+end

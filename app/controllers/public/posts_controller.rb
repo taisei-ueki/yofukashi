@@ -8,9 +8,14 @@ class Public::PostsController < ApplicationController
     @post_comment = PostComment.new
     
   end
+  
+  def search
+     @q = Post.ransack(params[:q])
+  end
 
   def index
     @posts = Post.all
+    # @posts = @q.result(distinct: true)
   end
   
   def create
@@ -41,6 +46,9 @@ class Public::PostsController < ApplicationController
     @post.destroy
     redirect_to public_posts_path(@posts)
   end
+  
+  
+  
   
   private
   
