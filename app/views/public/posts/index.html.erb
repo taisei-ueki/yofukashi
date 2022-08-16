@@ -27,7 +27,9 @@
       <td><%= post.body %></td>
       <td><%= post.address %></td>
       <td><div id="star-all-rate<%= post.id%>"></div></td>
-      <td></td>
+      <td id="favorite_<%= post.id %>">
+        <%= render 'public/favorites/favorite', post: post %>
+      </td>
       
       <script>
         $('#star-all-rate<%= post.id%>').raty({
