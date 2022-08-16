@@ -2,19 +2,22 @@ class Public::PostCommentsController < ApplicationController
 	
 	 def create
 	   @post = Post.find(params[:post_id])
-	   comment = current_user.post_comments.new(post_comment_params)
-	   comment.post_id = @post.id
-	   if comment.save
-	   	redirect_to public_post_path(@post), notice: 'コメントを投稿しました'
-	   else
+	   @post_comment = current_user.post_comments.new(post_comment_params)
+	   @post_comment.post_id = @post.id
+	   if @post_comment.save
+	   	flash.now[:notice] = 'コメントを投稿しました'
+	   	
 	   	render :comment
+	   else
+	   	render 'pubilc/post/show'
 	   end
 	 end
 	 
 	 def destroy
 	 	PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+	 	flash.now[:alert] = '投稿を削除しました'
 	 	@post = Post.find(params[:post_id])
-	 	redirect_to public_post_path(params[:post_id]), alert: 'コメントを削除しました'
+	 	render :comment
 	 end
 	 
 	 private

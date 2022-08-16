@@ -46,13 +46,13 @@
     </div>
 
 <!--コメント機能-->
-<div class="new-comment">
+<div id="form_area">
  <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
 </div>
 
 <!--コメント一覧-->
-<div class="comments-area">
- <%= render 'public/post_comments/comment', post: @post %>
+<div id="comments-area">
+ <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
 </div>
 
 <!--レビュー機能JavaScript-->
