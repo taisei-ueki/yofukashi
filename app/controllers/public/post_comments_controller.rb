@@ -6,8 +6,7 @@ class Public::PostCommentsController < ApplicationController
 	   @post_comment.post_id = @post.id
 	   if @post_comment.save
 	   	flash.now[:notice] = 'コメントを投稿しました'
-	   	
-	   	render :comment
+	   	render :post_comment
 	   else
 	   	render 'pubilc/post/show'
 	   end
@@ -17,7 +16,7 @@ class Public::PostCommentsController < ApplicationController
 	 	PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
 	 	flash.now[:alert] = '投稿を削除しました'
 	 	@post = Post.find(params[:post_id])
-	 	render :comment
+	 	render :post_comment
 	 end
 	 
 	 private

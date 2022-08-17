@@ -1,3 +1,39 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  padding: 1rem 2.5rem 2.5rem;
+}
+side {
+  width: 30%;
+  margin-bottom: 0;
+}
+main {
+  width: 64%;
+}
+
+.table {
+  
+}
+.profile-img {
+  border-radius: 50px;
+}
+
+.link-btn {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  background: #5fb2ca;
+  position: relative;
+  box-shadow: 0 3px #3b8a98;
+  top: -2px;
+}
+.link-btn:hover {
+  box-shadow: 0 1px #3b8a98;
+  top: 1px;
+}

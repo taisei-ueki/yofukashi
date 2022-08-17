@@ -12,6 +12,9 @@
     <td><%= @post.title %></td>
     <td><%= @post.body %></td>
     <td><%= @post.address %></td>
+    <td id="favorite_<%= @post.id %>">
+        <%= render 'public/favorites/favorite', post: @post %>
+    </td>
     
     <% if @post.user == current_user %>
       <td><button><%= link_to "編集", edit_public_post_path(@post) %></button></td>
@@ -51,7 +54,7 @@
 </div>
 
 <!--コメント一覧-->
-<div id="comments-area">
+<div id="comments_area">
  <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
 </div>
 

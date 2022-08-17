@@ -1,4 +1,8 @@
 class Public::PostsController < ApplicationController
+  
+  before_action :set_query
+  
+  
   def new
     @post = Post.new
   end
@@ -9,13 +13,10 @@ class Public::PostsController < ApplicationController
     
   end
   
-  def search
-     @q = Post.ransack(params[:q])
-  end
-
+  
   def index
-    @posts = Post.all
-    # @posts = @q.result(distinct: true)
+    # @posts = Post.all
+    @posts = @query.result(distinct: true)
   end
   
   def create
@@ -51,6 +52,11 @@ class Public::PostsController < ApplicationController
   
   
   private
+  
+  def set_query
+     @query = Post.ransack(params[:query])
+  end
+
   
   def post_params
     params.require(:post).permit(:title,:body,:address,:all_rate,:rush_rate,:relax_rate,:beautiful_rate,jenre_ids: [],place_ids: [],category_ids: [], main_images: [])

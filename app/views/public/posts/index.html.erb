@@ -1,36 +1,25 @@
 <p>投稿一覧</p>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>title</th>
-      <th>body</th>
-      <th>address</th>
-      <th>all_rate</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-    <tr>
-      <td>
+<div>
+  <%= link_to "投稿する",new_public_post_path %>
+</div>
+
+  
+  <% @posts.each do |post| %>
+  
         <%= link_to public_post_path(post.id) do %>
           <% if post.main_images.attached? %>
-            <% post.main_images.each do |main_image| %>
-              <%= image_tag main_image.variant(resize_to_limit: [100, 100]) %>
+            <% post.main_images.first(1).each do |main_image| %>
+              <%= image_tag main_image.variant(resize: "300x200^!"),class: "gallery" %>
             <% end %>
           <% end %>
         <% end %>
-      </td>
-      <td><%= post.title %></td>
-      <td><%= post.body %></td>
-      <td><%= post.address %></td>
-      <td><div id="star-all-rate<%= post.id%>"></div></td>
-      <td id="favorite_<%= post.id %>">
-        <%= render 'public/favorites/favorite', post: post %>
-      </td>
-      
+        <%= post.title %>
+        <div id="star-all-rate<%= post.id%>"></div>
+        <div id="favorite_<%= post.id %>">
+          <%= render 'public/favorites/favorite', post: post %>
+        <div>
+        
       <script>
         $('#star-all-rate<%= post.id%>').raty({
           size      : 36,
@@ -40,14 +29,20 @@
           readOnly: true,
           score: <%= post.all_rate %>,
         });
-      </script>
+      </script>  
+  
+  <% end %>
+  
+<main class="grid">
+<% @posts.each do |post| %>
+  
+        <%= link_to public_post_path(post.id) do %>
+          <% if post.main_images.attached? %>
+            <% post.main_images.first(1).each do |main_image| %>
+              <%= image_tag main_image.variant(resize: "300x200^") %>
+            <% end %>
+          <% end %>
+        <% end %>
       
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<div>
-  <%= link_to "投稿する",new_public_post_path %>
-</div>
-
+<% end %>
+</main>
