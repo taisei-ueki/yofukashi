@@ -1,0 +1,15 @@
+
+<div class="hidden_box">
+    <label for="label3">カテゴリーから探す</label>
+    <input type="checkbox" class="hidden_check" id="label3"/>
+    <div class="hidden_show">
+      <!--非表示ここから-->     
+      	<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+            <% Category.all.each do |t| %>
+                <li><%= check_box :category_ids, t.name %><%= t.name %></li>
+            <% end %>
+            <%= submit_tag '検索' %>
+        <% end %>
+      <!--ここまで-->
+    </div>
+</div>

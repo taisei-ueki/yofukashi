@@ -4,7 +4,12 @@
   <%= link_to "投稿する",new_public_post_path %>
 </div>
 
-  
+	
+<!--tag検索-->
+<%= render 'public/posts/jenre_search' %>
+<%= render 'public/posts/place_search' %>
+<%= render 'public/posts/category_search' %>
+
   <% @posts.each do |post| %>
   
         <%= link_to public_post_path(post.id) do %>

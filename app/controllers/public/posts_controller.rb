@@ -1,6 +1,5 @@
 class Public::PostsController < ApplicationController
   
-  before_action :set_query
   
   
   def new
@@ -15,8 +14,33 @@ class Public::PostsController < ApplicationController
   
   
   def index
-    # @posts = Post.all
-    @posts = @query.result(distinct: true)
+    @posts = Post.all
+    
+    # タグ検索
+    if params[:jenre_ids]
+      @posts = []
+      params[:jenre_ids].each do |key, value|      
+        @posts += Jenre.find_by(name: key).posts if value == "1"
+      end
+      @posts.uniq!
+    end
+    
+    if params[:place_ids]
+      @posts = []
+      params[:place_ids].each do |key, value|      
+        @posts += Place.find_by(name: key).posts if value == "1"
+      end
+      @posts.uniq!
+    end
+    
+    if params[:category_ids]
+      @posts = []
+      params[:category_ids].each do |key, value|      
+        @posts += Category.find_by(name: key).posts if value == "1"
+      end
+      @posts.uniq!
+    end
+    
   end
   
   def create
@@ -49,14 +73,7 @@ class Public::PostsController < ApplicationController
   end
   
   
-  
-  
   private
-  
-  def set_query
-     @query = Post.ransack(params[:query])
-  end
-
   
   def post_params
     params.require(:post).permit(:title,:body,:address,:all_rate,:rush_rate,:relax_rate,:beautiful_rate,jenre_ids: [],place_ids: [],category_ids: [], main_images: [])
