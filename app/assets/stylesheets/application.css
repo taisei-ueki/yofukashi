@@ -13,3 +13,134 @@
  *= require_tree .
  *= require_self
  */
+ 
+
+ /*header関連*/
+ /**/
+ .text-nav {
+ 	display: flex;
+  flex-wrap: wrap;
+  margin:0 0 50px 0;
+  list-style: none;
+ }
+ 
+ .text-nav .header-text{
+ 	display: block;
+  padding:10px 30px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+ }
+ 
+ .text-nav .header-text:hover {
+   color:#0481A2;
+ }
+ 
+ .text-nav .header-text:after {
+ 	 content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 50%;
+    background:#0481A2;
+    /*アニメーション*/
+    transition: all .3s;
+    transform: scale(0.04, 1);/*X方向0.04、Y方向1*/
+    transform-origin:center bottom;/*中央下部基点*/
+ }
+ .text-nav .header-text:hover:after {
+ 	 height: 2px;
+   border-radius: 0;/*丸みをなくす*/    
+   transform: scale(0.8, 1);/*X方向0.8、Y方向1にスケール拡大*/
+ }
+ 
+ 
+ /*devise関連*/
+ /**/
+.form-area {
+	width: 60%;
+	margin: 0 auto;
+}
+.devise-field{
+  position: relative;
+  width: 80%;
+  margin:40px 3%;
+}
+
+.form-box{
+  font: 15px/24px sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  letter-spacing: 2px;
+  padding-left:4rem;
+	border: 0;
+	border-bottom: 1px solid #cccccc;
+	background-color: transparent;
+}
+.form-box:focus{
+  outline: none;
+}
+.focus-line {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	transition: 0.4s;
+	background-color: #eb5d7e;
+}
+.form-box:focus ~ .focus-line{
+  width: 100%;
+  transition: 0.7s;
+}
+
+.form-box ~ label{
+  position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 10px;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #aaaaaa;
+}
+.form-box:focus ~ label{
+  font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #eb5d7e;
+}
+
+.form-btn {
+	margin: 40px;
+	display: inline-block;
+	width: 30%;
+	line-height: 3em;
+	cursor: pointer;
+	user-select: none;
+	transition: box-shadow 0.2s, transform 0.2s;
+	color: #5252a5;
+	border-width: 0;
+	border-style: solid;
+	border-radius: 12% / 50%;
+	background: transparent;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+.form-btn:hover {
+	-webkit-transform: scale(1.02);
+	        transform: scale(1.02);
+	box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.2);
+	color: #ec407a;
+}
+.form-btn:active {
+	transition-duration: 0.05s;
+	-webkit-transform: scale(0.99);
+	        transform: scale(0.99);
+	box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.15) inset;
+}
+.form-btn:focus,
+.form-btn:focus:hover {
+	color: #ec407a;
+}

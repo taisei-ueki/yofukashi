@@ -1,34 +1,39 @@
-<h2>Sign up</h2>
+<div class="form-area">
+<h2 class="heading">Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, class: "name" %>
+  <div class="devise-field">
+    <%= f.text_field :name, autofocus: true, class: "form-box" %>
+    <%= f.label :name %>
+    <span class="focus-line"></span>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="devise-field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-box" %>
+    <%= f.label :email %>
+    <span class="focus-line"></span>
   </div>
 
-  <div class="field">
+  <div class="devise-field">
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-box" %>
     <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <span class="focus-line"></span>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+ 
+  <div class="devise-field">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-box" %>
+    <%= f.label :password_confirmation %>
+    <span class="focus-line"></span>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up",class: "form-btn" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<h5 class="border-bottom text-left">会員登録がお済みの方</h5>
+<p><%= render "public/shared/links" %>からログインを行ってください</p>
+
+</div>

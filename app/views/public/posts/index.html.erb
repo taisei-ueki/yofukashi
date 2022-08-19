@@ -1,8 +1,5 @@
 <p>投稿一覧</p>
 
-<div>
-  <%= link_to "投稿する",new_public_post_path %>
-</div>
 
 	
 <!--tag検索-->
@@ -10,20 +7,40 @@
 <%= render 'public/posts/place_search' %>
 <%= render 'public/posts/category_search' %>
 
-  <% @posts.each do |post| %>
-  
+ 
+<div class="row">
+<% @posts.each do |post| %>
+<div class="col-12 col-md-3">
+  <div class="card rounded">
+    <div class="card-img-top bd-placeholder-img">
         <%= link_to public_post_path(post.id) do %>
           <% if post.main_images.attached? %>
             <% post.main_images.first(1).each do |main_image| %>
-              <%= image_tag main_image.variant(resize: "300x200^!"),class: "gallery" %>
+              <%= image_tag main_image, class: "img-fluid rounded" %>
             <% end %>
           <% end %>
         <% end %>
-        <%= post.title %>
-        <div id="star-all-rate<%= post.id%>"></div>
-        <div id="favorite_<%= post.id %>">
-          <%= render 'public/favorites/favorite', post: post %>
-        <div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <div class="card-text">
+        <!--タグ関連-->
+    <div class="tag">
+      <% post.jenres.each do |jenre| %>
+       <span class="name-tag">#<%= jenre.name %></span>
+      <% end %>
+      
+      <% post.places.each do |place| %>
+       <span class="name-tag">#<%= place.name %></span>
+      <% end %>
+      
+      <% post.categories.each do |category| %>
+       <span class="name-tag">#<%= category.name %></span>
+      <% end %>
+    </div>
+        <div id="star-all-rate<%= post.id%>">満足度：</div>
+        <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
+      </div>
         
       <script>
         $('#star-all-rate<%= post.id%>').raty({
@@ -35,19 +52,8 @@
           score: <%= post.all_rate %>,
         });
       </script>  
-  
-  <% end %>
-  
-<main class="grid">
-<% @posts.each do |post| %>
-  
-        <%= link_to public_post_path(post.id) do %>
-          <% if post.main_images.attached? %>
-            <% post.main_images.first(1).each do |main_image| %>
-              <%= image_tag main_image.variant(resize: "300x200^") %>
-            <% end %>
-          <% end %>
-        <% end %>
-      
+    </div>
+  </div>      
+</div>
 <% end %>
-</main>
+</div>

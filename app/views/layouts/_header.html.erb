@@ -1,28 +1,30 @@
 <header>
   <!--ユーザのヘッダー-->
   <% if user_signed_in? %>
-    <ul>
-      <li>ようこそ、<%= current_user.name %>さん！</li>
+    <ul class="text-nav">
       
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-text" %></li>
       
-      <li><%= link_to "マイページ", public_user_path(current_user) %></li>
+      <li><%= link_to "マイページ", public_user_path(current_user), class: "header-text" %></li>
       
-      <li><%= link_to "投稿",public_posts_path %></li>
+      <li><%= link_to "みんなの投稿",public_posts_path, class: "header-text" %></li>
+      
+      <li><%= link_to "投稿する",new_public_post_path, class: "header-text" %></li>
     </ul>
   <!--アドミンのヘッダー-->
   <% elsif admin_signed_in? %>
-    <ul>
-      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+    <ul class="text-nav">
+      <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header-text" %></li>
     </ul>
   <!--ゲストのヘッダー-->
   <% else %>
-    <ul>
-      <li><%= link_to 'ログイン',new_user_session_path %></li>
+    <ul class="text-nav">
       
-      <li><%= link_to 'サインイン',new_user_registration_path %></li>
+      <li><%= link_to 'ログイン',new_user_session_path, class: "header-text" %></li>
       
-      <li><%= link_to 'about',about_path%></li>
+      <li><%= link_to 'サインイン',new_user_registration_path, class: "header-text" %></li>
+      
+      <li><%= link_to 'about',about_path, class: "header-text"%></li>
     </ul>
   <% end %>
 </header>

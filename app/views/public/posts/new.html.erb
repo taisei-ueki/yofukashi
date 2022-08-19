@@ -1,17 +1,28 @@
+<div class="post-form">
 <h1>投稿フォーム</h1>
 <%= form_with model: @post,url: public_posts_path do |f| %>
 
   <%= f.label :main_images ,'画像' %>
   <%= f.file_field :main_images, multiple: true %>
   
-  <%= f.label :title ,'タイトル' %>
-  <%= f.text_field :title %>
+  <div class="post-field">
+   <%= f.text_field :title, class: "form-box" %>
+   <%= f.label :title ,'タイトル' %>
+   <span class="focus-line"></span>
+  </div>
   
-  <%= f.label :body ,'紹介文' %>
-  <%= f.text_area :body %>
-  
+  <div class="post-field">
+  <%= f.text_field :address, class: "form-box" %>
   <%= f.label :address ,'所在地' %>
-  <%= f.text_field :address %>
+  <span class="focus-line"></span>
+  </div>
+  
+  <div class="post-field">
+  <%= f.text_area :body,class: "text-box", rows: 10 %>
+  <%= f.label :body ,'コメント' %>
+  <span class="focus-box"><i></i></span>
+  </div>
+  
   
  <div class='form-group'>
   <%= f.collection_check_boxes(:jenre_ids, Jenre.all, :id, :name) do |jenre| %>
@@ -68,6 +79,7 @@
 
 <%= f.submit '投稿する' %>
 <% end %>
+</div>
 
 <!-- 評価javascript -->
   <script>
