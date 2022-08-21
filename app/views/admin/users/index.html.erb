@@ -1,0 +1,30 @@
+<h3>ユーザー一覧</h3>
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td>
+        <% if user.is_deleted %>
+          <b class="text-secondary">退会</b>  <%# true(退会済み)の時の表示 %>
+        <% else %>
+          <b class="text-success">有効</b>  <%# false(初期値)の時の表示 %>
+        <% end %>
+      </td>
+      <td><%= link_to '編集する', edit_admin_user_path(user.id) %></td>
+      <td><%= link_to '投稿一覧を見る', admin_user_path(user.id) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

@@ -38,3 +38,10 @@ Category.create([
   { name: '海岸' },
   { name: '山' }
 ])
+
+
+Admin.create!(
+  id: '1',
+  email: 'admin@admin',
+  password: '202020',
+)

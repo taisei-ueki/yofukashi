@@ -68,6 +68,7 @@
     opacity: 1;
 }
 
+
 //投稿フォーム
 .post-form {
 	width: 60%;
@@ -151,4 +152,67 @@
 	left: 14px;
 	transition: 0.3s;
 	color: #da3c41;
+}
+
+// チェックボックス
+.form-group{
+    width: 90%;
+	margin: 2em auto;
+	text-align: left;
+}
+.form-check{
+    position: relative;
+    
+}
+.form-check:hover{
+    color: #da3c41;
+}
+
+// レビュー機能
+.field{
+    width: 90%;
+	margin: 1em auto;
+}
+
+// 投稿ボタン
+
+.post-btn {
+	position: relative;
+	display: block;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	border: 3px solid #9C27B0;
+	text-decoration: none;
+	outline: none;
+	transition: all .4s;
+	color: #aaaaaa;
+	background-color: #fff;
+}
+.post-btn::before,
+.post-btn::after {
+	position: absolute;
+	top: -3px;
+	right: -3px;
+	bottom: -3px;
+	left: -3px;
+	z-index: 2;
+	content: '';
+	transition: all .4s;
+}
+.post-btn::before {
+	border-top: 3px solid #FF5722;
+	border-bottom: 3px solid #FF5722;
+	transform: scale(0, 1);
+}
+.post-btn::after {
+	border-right: 3px solid #FF5722;
+	border-left: 3px solid #FF5722;
+	transform: scale(1, 0);
+}
+.post-btn:hover {
+	color: #FF5722;
+}
+.post-btn:hover::after,.post-btn:hover::before {
+	transform: scale(1);
 }

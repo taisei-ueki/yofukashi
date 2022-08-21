@@ -3,24 +3,35 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .container {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 4rem;
   padding: 1rem 2.5rem 2.5rem;
 }
-side {
-  width: 30%;
-  margin-bottom: 0;
-}
-main {
-  width: 64%;
+main{
+  margin-top: 5rem;
 }
 
-.table {
-  
+
+.profile {
+  width: 30%;
+  margin: 0 auto;
 }
 .profile-img {
-  border-radius: 50px;
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.profile-name{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.2rem;
+  margin: 1rem auto 1rem;
+  letter-spacing:.1rem;
+}
+.profile-introduction{
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 }
 
 .link-btn {
@@ -36,4 +47,8 @@ main {
 .link-btn:hover {
   box-shadow: 0 1px #3b8a98;
   top: 1px;
+}
+.user-post{
+  text-align: center;
+  margin: 2rem;
 }

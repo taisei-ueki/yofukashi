@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
- 
+ body {
+ 	background-color: #000000;
+ }
 
  /*header関連*/
  /**/
@@ -144,3 +146,4 @@
 .form-btn:focus:hover {
 	color: #ec407a;
 }
+

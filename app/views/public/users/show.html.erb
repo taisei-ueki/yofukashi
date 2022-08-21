@@ -1,23 +1,17 @@
-<p>プロフィール</p>
+
 
 <div class="container">
-  <side>
-    <table class="table">
-      <tr><%= image_tag @user.get_profile_image, size:'100x100',class: "profile-img" %></tr>
-      <tr>
-        <th><%= @user.name %></th>
-      </tr>
-      <tr>
-        <td><%= @user.introduction %></td>
-      </tr>
-    </table>
+  <div class="profile">
+      <%= image_tag @user.get_profile_image,class: "profile-img" %>
+      <div class="profile-name"><%= @user.name %></div>
+      <div class="profile-introduction"><%= @user.introduction %></div>
       
     <%= link_to "プロフィールを編集", edit_public_user_path(current_user), class: "link-btn" %>
-  </side>
+  </div>
   
   <main>
-    
-    <p>main</p>
+    <h4 class="user-post">投稿一覧</h4>
+    <%= render 'public/posts/index',posts: @posts %>
     
   </main>
     

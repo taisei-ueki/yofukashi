@@ -1,0 +1,37 @@
+<%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+<table>
+  <h3>ユーザー編集</h3>
+  <tbody>
+    <tr>
+      <td>ユーザーID</td>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <td>ユーザーネーム</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td>イントロダクション</td>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <td>ユーザーステータス</td>
+      <td>
+        <%# is_deleted(退会フラグ)がfalse(初期値)なら'有効' %>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted, "有効" %>
+        <%# is_deleted(退会フラグ)がtrue(退会処理済み)なら'退会' %>
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted, "退会" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="user-btn">
+  <%= f.submit '編集内容を保存'%>
+</div>
+<% end %>
