@@ -11,6 +11,12 @@
       <li><%= link_to "投稿する",new_public_post_path, class: "header-text" %></li>
       
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-text" %></li>
+      
+      <li>
+        <%= link_to search_public_posts_path, class: "header-text" do %>
+           <i class="fa-regular fa-magnifying-glass"></i>search
+        <% end %>   
+      </li>
     </ul>
   <!--アドミンのヘッダー-->
   <% elsif admin_signed_in? %>
