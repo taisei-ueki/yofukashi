@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       collection do
        get 'search'
+       get 'rank'
       end
     end
 

@@ -33,4 +33,14 @@ class Post < ApplicationRecord
    end
   end
   
+  def self.create_favorite_ranks #Noteクラスからデータを取ってくる処理なのでクラスメソッド！
+    Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  end
+  
+  def self.create_comment_ranks 
+    Post.find(PostComment.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  end
+  
+ 
+  
 end

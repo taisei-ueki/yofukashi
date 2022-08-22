@@ -8,6 +8,8 @@
       
       <li><%= link_to "みんなの投稿",public_posts_path, class: "header-text" %></li>
       
+      <li><%= link_to "ランキング",rank_public_posts_path, class: "header-text" %></li>
+      
       <li><%= link_to "投稿する",new_public_post_path, class: "header-text" %></li>
       
       <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-text" %></li>

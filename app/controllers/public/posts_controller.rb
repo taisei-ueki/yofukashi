@@ -46,6 +46,11 @@ class Public::PostsController < ApplicationController
     redirect_to public_posts_path(@posts)
   end
   
+  def rank
+    @favorite_ranks = Post.create_favorite_ranks
+    @comment_ranks = Post.create_comment_ranks
+  end
+  
   def search
     # キーワード検索
     @posts = Post.search(params[:keyword])

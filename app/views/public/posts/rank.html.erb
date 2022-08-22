@@ -1,0 +1,103 @@
+<h3>いいねランキング</h3>
+<div class="row">
+<% @favorite_ranks.each.with_index(1) do |post, i| %>
+<div class="col-12 col-md-3">
+  <h3><i class="fas fa-crown"></i>第<%= i %>位</h3>
+  <div class="card rounded">
+    <div class="card-img-top bd-placeholder-img">
+        <%= link_to public_post_path(post.id) do %>
+          <% if post.main_images.attached? %>
+            <% post.main_images.first(1).each do |main_image| %>
+              <%= image_tag main_image, class: "img-fluid rounded" %>
+            <% end %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <div class="card-text">
+        <!--タグ関連-->
+    <div class="tag">
+      <% post.jenres.each do |jenre| %>
+       <span class="name-tag">#<%= jenre.name %></span>
+      <% end %>
+      
+      <% post.places.each do |place| %>
+       <span class="name-tag">#<%= place.name %></span>
+      <% end %>
+      
+      <% post.categories.each do |category| %>
+       <span class="name-tag">#<%= category.name %></span>
+      <% end %>
+    </div>
+        <div id="star-all-rate<%= post.id%>">満足度：</div>
+        <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
+      </div>
+        
+      <script>
+        $('#star-all-rate<%= post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= post.all_rate %>,
+        });
+      </script>  
+    </div>
+  </div>      
+</div>
+<% end %>
+</div>
+
+<h3>コメントランキング</h3>
+<div class="row">
+<% @comment_ranks.each.with_index(1) do |post, i| %>
+<div class="col-12 col-md-3">
+  <h3><i class="fas fa-crown"></i>第<%= i %>位</h3>
+  <div class="card rounded">
+    <div class="card-img-top bd-placeholder-img">
+        <%= link_to public_post_path(post.id) do %>
+          <% if post.main_images.attached? %>
+            <% post.main_images.first(1).each do |main_image| %>
+              <%= image_tag main_image, class: "img-fluid rounded" %>
+            <% end %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <div class="card-text">
+        <!--タグ関連-->
+    <div class="tag">
+      <% post.jenres.each do |jenre| %>
+       <span class="name-tag">#<%= jenre.name %></span>
+      <% end %>
+      
+      <% post.places.each do |place| %>
+       <span class="name-tag">#<%= place.name %></span>
+      <% end %>
+      
+      <% post.categories.each do |category| %>
+       <span class="name-tag">#<%= category.name %></span>
+      <% end %>
+    </div>
+        <div id="star-all-rate<%= post.id%>">満足度：</div>
+        <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
+      </div>
+        
+      <script>
+        $('#star-all-rate<%= post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf  : '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= post.all_rate %>,
+        });
+      </script>  
+    </div>
+  </div>      
+</div>
+<% end %>
+</div>
