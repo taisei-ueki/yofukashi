@@ -2,19 +2,24 @@
   <!--ユーザのヘッダー-->
   <% if user_signed_in? %>
     <ul class="text-nav">
-      
-      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-text" %></li>
+      <li><%= link_to 'はじめに',about_path, class: "header-text"%></li>
       
       <li><%= link_to "マイページ", public_user_path(current_user), class: "header-text" %></li>
       
       <li><%= link_to "みんなの投稿",public_posts_path, class: "header-text" %></li>
       
       <li><%= link_to "投稿する",new_public_post_path, class: "header-text" %></li>
+      
+      <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header-text" %></li>
     </ul>
   <!--アドミンのヘッダー-->
   <% elsif admin_signed_in? %>
     <ul class="text-nav">
       <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header-text" %></li>
+      
+      <li><%= link_to "ユーザー一覧",admin_users_path, class: "header-text" %></li>
+      
+      <li><%= link_to "投稿一覧",admin_posts_path, class: "header-text" %></li>
     </ul>
   <!--ゲストのヘッダー-->
   <% else %>
@@ -24,7 +29,7 @@
       
       <li><%= link_to 'サインイン',new_user_registration_path, class: "header-text" %></li>
       
-      <li><%= link_to 'about',about_path, class: "header-text"%></li>
+      <li><%= link_to 'はじめに',about_path, class: "header-text"%></li>
     </ul>
   <% end %>
 </header>

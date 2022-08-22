@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   has_many_attached :main_images
   
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+      favorites.exists?(user_id: user.id)
   end
   
 end
