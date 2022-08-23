@@ -1,11 +1,14 @@
-
-      <% if @post.main_images.attached? %>
-        <% @post.main_images.each do |main_image| %>
-          <%= image_tag main_image.variant(resize_to_limit: [100, 100]) %>
-        <% end %>
-      <% end %>
-
-    <%= @post.title %>
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <% if @post.main_images.attached? %>
+              <% @post.main_images.each do |main_image| %>
+                <%= image_tag main_image, class: "img-fluid rounded" %>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="col-5">
+            <%= @post.title %>
     <%= @post.body %>
     <%= @post.address %>
     <div id="favorite_<%= @post.id %>">
@@ -13,17 +16,17 @@
     </div>
     
     <% if @post.user == current_user %>
-      <button><%= link_to "編集", edit_public_post_path(@post) %></button>
-      <button><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button>
+      <button class="post-btn"><%= link_to "編集", edit_public_post_path(@post) %></button>
+      <button class="post-btn"><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button>
     <% else %>
       
     <% end %>
     
     <!--レビュー機能-->
-    <div id="star-all-rate<%= @post.id%>"></div>
-    <div id="star-rush-rate<%= @post.id%>"></div>
-    <div id="star-relax-rate<%= @post.id%>"></div>
-    <div id="star-beautiful-rate<%= @post.id%>"></div>
+    <div id="star-all-rate<%= @post.id%>">満足度：</div>
+    <div id="star-rush-rate<%= @post.id%>">混　雑：</div>
+    <div id="star-relax-rate<%= @post.id%>">安らぎ：</div>
+    <div id="star-beautiful-rate<%= @post.id%>">綺麗さ：</div>
     
   
 <!--タグ関連-->
@@ -50,6 +53,14 @@
 <div id="comments-area">
  <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
 </div>
+        
+        
+        
+    </div>
+</div>
+      
+
+    
 
 <!--レビュー機能JavaScript-->
      <script>

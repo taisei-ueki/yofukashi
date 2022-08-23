@@ -1,4 +1,4 @@
  <%= form_with url: public_post_post_comments_path(post), local: false do |f| %>
-    <%= f.text_area :comment, rows: '5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <%= f.text_area :comment,placeholder: "コメントをここに", rows: 5 %>
+    <%= f.submit "送信する",class: "form-btn" %>
   <% end %>  
