@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_021307) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 2022_08_21_021307) do
   end
 
   create_table "jenres", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_021307) do
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.integer "user_id", null: false
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(version: 2022_08_21_021307) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
-    t.string "address", default: "", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.string "address", null: false
     t.integer "user_id", null: false
     t.integer "price_status", default: 0, null: false
     t.integer "parking_status", default: 0, null: false
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_021307) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", default: "", null: false
+    t.string "name", null: false
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
