@@ -1,38 +1,31 @@
-<h2>投稿詳細</h2>
 
-<table>
-  <tr>
-    <td>
       <% if @post.main_images.attached? %>
         <% @post.main_images.each do |main_image| %>
           <%= image_tag main_image.variant(resize_to_limit: [100, 100]) %>
         <% end %>
       <% end %>
-    </td>
-    <td><%= @post.title %></td>
-    <td><%= @post.body %></td>
-    <td><%= @post.address %></td>
-    <td id="favorite_<%= @post.id %>">
+
+    <%= @post.title %>
+    <%= @post.body %>
+    <%= @post.address %>
+    <div id="favorite_<%= @post.id %>">
         <%= render 'public/favorites/favorite', post: @post %>
-    </td>
+    </div>
     
     <% if @post.user == current_user %>
-      <td><button><%= link_to "編集", edit_public_post_path(@post) %></button></td>
-      <td><button><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button></td>
+      <button><%= link_to "編集", edit_public_post_path(@post) %></button>
+      <button><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button>
     <% else %>
-      <td></td>
-      <td></td>
+      
     <% end %>
     
     <!--レビュー機能-->
-    <td><div id="star-all-rate<%= @post.id%>"></div></td>
-    <td><div id="star-rush-rate<%= @post.id%>"></div></td>
-    <td><div id="star-relax-rate<%= @post.id%>"></div></td>
-    <td><div id="star-beautiful-rate<%= @post.id%>"></div></td>
+    <div id="star-all-rate<%= @post.id%>"></div>
+    <div id="star-rush-rate<%= @post.id%>"></div>
+    <div id="star-relax-rate<%= @post.id%>"></div>
+    <div id="star-beautiful-rate<%= @post.id%>"></div>
     
-  </tr>
-</table>
-
+  
 <!--タグ関連-->
     <div class="tag">
       <% @post.jenres.each do |jenre| %>

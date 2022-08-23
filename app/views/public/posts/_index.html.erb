@@ -30,6 +30,11 @@
     </div>
         <div id="star-all-rate<%= post.id%>">満足度：</div>
         <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
+        <div class="comment-icon">
+        <%= link_to public_post_path(post) do %>
+          <i class="fa-solid fa-comment"></i><%= post.post_comments.count %>
+        <% end %>
+        </div>
       </div>
         
       <script>
