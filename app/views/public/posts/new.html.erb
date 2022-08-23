@@ -13,7 +13,7 @@
   
   <div class="post-field">
   <%= f.text_field :address, class: "form-box" %>
-  <%= f.label :address ,'所在地・施設名' %>
+  <%= f.label :address ,'所在地' %>
   <span class="focus-line"></span>
   </div>
   
@@ -24,10 +24,10 @@
   </div>
   
   <div class='form-group'>
-  <%= f.collection_select(:place_ids, Place.all, :id, :name) do |place| %>
+  <%= f.collection_check_boxes(:place_ids, Place.all, :id, :name) do |place| %>
     <div class='form-check'>
       <%= place.label do %>
-        <%= place.select_box %>
+        <%= place.check_box %>
         <%= place.text %>
       <% end %>
     </div>
