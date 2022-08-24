@@ -6,36 +6,45 @@
         <%= link_to public_post_path(post.id) do %>
           <% if post.main_images.attached? %>
             <% post.main_images.first(1).each do |main_image| %>
-              <%= image_tag main_image, class: "img-fluid rounded" %>
+              <%= image_tag main_image.variant( resize: "400x300^", gravity: "center", crop: "400x300+0+0" ), class: "img-fluid rounded" %>
             <% end %>
           <% end %>
         <% end %>
     </div>
     <div class="card-body">
-      <h5 class="card-title"><%= post.title %></h5>
-      <div class="card-text">
-        <!--タグ関連-->
-    <div class="tag">
+      <!--タグ関連-->
+      <div class="tag">
       <% post.jenres.each do |jenre| %>
-       <span class="name-tag">#<%= jenre.name %></span>
+       <span class="name-tag"><%= jenre.name %></span>
       <% end %>
       
       <% post.places.each do |place| %>
-       <span class="name-tag">#<%= place.name %></span>
+       <span class="name-tag"><%= place.name %></span>
       <% end %>
       
       <% post.categories.each do |category| %>
-       <span class="name-tag">#<%= category.name %></span>
+       <span class="name-tag"><%= category.name %></span>
       <% end %>
     </div>
+      
+      <h5 class="card-title"><%= post.title %></h5>
+      
+      <div class="card-icon">
         <div id="star-all-rate<%= post.id%>">満足度：</div>
         <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
-        <div class="comment-icon">
+        <div class="comment">
         <%= link_to public_post_path(post) do %>
-          コメント：<%= post.post_comments.count %>
+          <i class="fas fa-comment comment-icon"></i><%= post.post_comments.count %>
         <% end %>
         </div>
       </div>
+     
+        
+        
+    
+        
+        
+
         
       <script>
         $('#star-all-rate<%= post.id%>').raty({

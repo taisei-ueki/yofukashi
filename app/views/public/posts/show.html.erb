@@ -1,50 +1,66 @@
 <div class="container">
     <div class="row">
-        <div class="col-7">
             <% if @post.main_images.attached? %>
               <% @post.main_images.each do |main_image| %>
-                <%= image_tag main_image, class: "img-fluid rounded" %>
+                <%= image_tag main_image, class: "show-image" %>
               <% end %>
             <% end %>
-        </div>
-        <div class="col-5">
-            <%= @post.title %>
-    <%= @post.body %>
-    <%= @post.address %>
-    <div id="favorite_<%= @post.id %>">
+    </div>
+    <div class="row">
+    <div class="col-7">
+        <h4><%= @post.title %></h4>
+        <div id="favorite_<%= @post.id %>">
         <%= render 'public/favorites/favorite', post: @post %>
+        </div>
+        
+        <!--タグ関連-->
+    <div class="tag">
+      <% @post.jenres.each do |jenre| %>
+       <span class="name-tag">#<%= jenre.name %></span>
+      <% end %>
+      
+      <% @post.places.each do |place| %>
+       <span class="name-tag">#<%= place.name %></span>
+      <% end %>
+      
+      <% @post.categories.each do |category| %>
+       <span class="name-tag">#<%= category.name %></span>
+      <% end %>
+    </div>
+        
+    <div><%= @post.body %></div>
+    
+    <div>所在地：<%= @post.address %></div>
+    
     </div>
     
+    <div class="col-5">
+    
     <% if @post.user == current_user %>
-      <button class="post-btn"><%= link_to "編集", edit_public_post_path(@post) %></button>
-      <button class="post-btn"><%= link_to "削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button>
+      <button class="postbtn"><%= link_to "投稿を削除する", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button>
     <% else %>
       
     <% end %>
     
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            
+        
+    
     <!--レビュー機能-->
+    <h4 class="border-bottom">評価</h4>
     <div id="star-all-rate<%= @post.id%>">満足度：</div>
     <div id="star-rush-rate<%= @post.id%>">混　雑：</div>
     <div id="star-relax-rate<%= @post.id%>">安らぎ：</div>
     <div id="star-beautiful-rate<%= @post.id%>">綺麗さ：</div>
     
   
-<!--タグ関連-->
-    <div class="tag">
-      <% @post.jenres.each do |jenre| %>
-       <span><%= jenre.name %></span>
-      <% end %>
-      
-      <% @post.places.each do |place| %>
-       <span><%= place.name %></span>
-      <% end %>
-      
-      <% @post.categories.each do |category| %>
-       <span><%= category.name %></span>
-      <% end %>
-    </div>
+
 
 <!--コメント機能-->
+<h4 class="border-bottom">コメント</h4>
 <div id="form-area">
  <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
 </div>
@@ -55,7 +71,7 @@
 </div>
         
         
-        
+        </div>
     </div>
 </div>
       

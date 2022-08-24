@@ -2,32 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
+.card{
+	margin: 0.5rem;
+}
 .card-img-top {
     max-width: 100%;
     height: 15vw;
     object-fit: cover;
 }
+.card-body{
+	margin-top: 1rem;
+}
+.card-title{
+	margin-top: 0.5rem;
+}
+.card-icon{
+	display: flex;
+	margin-right: 1rem;
+}
+.show-image{
+	width: 100%;
+	
+}
 
 // いいね
 .like-btn {
- font-size: 25px;
+ font-size: 20px;
  color: #808080; 
  margin-left: 10px;
  }
 
 .unlike-btn {
- font-size: 25px;
+ font-size: 20px;
  color: #e54747;
  margin-left: 10px;
+ }
+ 
+ //コメント
+ .comment-icon{
+  font-size: 20px;
+  color: #808080;
+  margin-left: 5px;
  }
 
 
 // tag関連
 .name-tag {
+	font-size: 12px;
     background-color: #bbb;
     padding: 5px;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     border-radius: 5px;
 }
 
