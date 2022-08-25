@@ -4,12 +4,7 @@
     <input type="checkbox" class="hidden_check" id="label2"/>
     <div class="hidden_show">
       <!--非表示ここから--> 
-      	<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-            <% Place.all.each do |t| %>
-                <li><%= check_box :place_ids, t.name %><%= t.name %></li>
-            <% end %>
-            <%= submit_tag '検索' %>
-        <% end %>
+      	
       <!--ここまで-->
     </div>
 </div>

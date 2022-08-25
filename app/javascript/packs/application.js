@@ -12,7 +12,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application" 
 import '@fortawesome/fontawesome-free/js/all'
-
+import 'slick-carousel'; //追加
+import './slick' //追加
 
 
 
@@ -22,5 +23,4 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
-require('packs/slick.min')
 require('packs/slick')

@@ -1,6 +1,7 @@
 <div class="row">
 <% posts.each do |post| %>
 <div class="col-12 col-md-3">
+  <div class="post-index">
   <div class="card rounded">
     <div class="card-img-top bd-placeholder-img">
         <%= link_to public_post_path(post.id) do %>
@@ -39,13 +40,7 @@
         </div>
       </div>
      
-        
-        
-    
-        
-        
-
-        
+      
       <script>
         $('#star-all-rate<%= post.id%>').raty({
           size      : 36,
@@ -55,7 +50,8 @@
           readOnly: true,
           score: <%= post.all_rate %>,
         });
-      </script>  
+      </script>
+      </div>
     </div>
   </div>      
 </div>

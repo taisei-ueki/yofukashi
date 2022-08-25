@@ -3,7 +3,11 @@
 <%= form_with model: @post,url: public_posts_path do |f| %>
 
   <%= f.label :main_images ,'画像' %>
-  <%= f.file_field :main_images, multiple: true %>
+  <%= f.file_field :main_images, multiple: true, onchange: "loadImage(this);" %>
+  
+  <div id="post_images" style="display: none;">
+    
+  </div>
   
   <div class="post-field">
    <%= f.text_field :title, class: "form-box" %>
@@ -115,4 +119,23 @@
     scoreName: 'post[beautiful_rate]',
     half: true,
   });
+  
+  // 画像プレビュー
+  function loadImage(obj)
+  {
+    var allPreview = document.getElementById('post_images');
+   
+    
+    document.getElementById("post_images").style.display = "";
+    for (i = 0; i < obj.files.length; i++) {
+        var fileReader = new FileReader();
+        fileReader.onload = (function (e) {
+            var img = new Image();
+            img.src = e.target.result;
+            allPreview.appendChild(img);
+        });
+      fileReader.readAsDataURL(obj.files[i]);
+    }
+  }
+  
   </script>  

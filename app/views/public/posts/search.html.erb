@@ -1,14 +1,65 @@
-<%= form_with(url: search_public_posts_path,method: :get ) do |form| %>
-  <%= form.text_field :keyword %>
-  <%= form.submit "検索" %>
-<% end %>
+<div class='tabs'>
+  <div class='tab-buttons'>
+    <span class='content1'>キーワードから探す</span>
+    <span class='content2'>シーンから探す</span>
+    <span class='content3'>エリアから探す</span>
+    <span class='content4'>カテゴリーから探す</span>
+    <div id='lamp' class='content1'></div>
+  </div>
+  <div class='tab-content'>
+    <div class='content1'>
+      <%= form_with(url: search_public_posts_path,method: :get ) do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit "検索" %>
+      <% end %>
+    </div>
+    <div class='content2'>
+      <h5></h5>
+      <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
+            <% Jenre.all.each do |t| %>
+                <div class="item"><%= check_box :jenre_ids, t.name %><%= t.name %></div>
+            <% end %>
+            <%= submit_tag '検索' %>
+        <% end %>
+    </div>
+    <div class='content3'>
+      <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
+            <% Place.all.each do |t| %>
+                <div class="item"><%= check_box :place_ids, t.name %><%= t.name %></div>
+            <% end %>
+            <%= submit_tag '検索' %>
+        <% end %>
+    </div>
+    <div class='content4'>
+      <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
+            <% Category.all.each do |t| %>
+                <div class="item"><%= check_box :category_ids, t.name %><%= t.name %></div>
+            <% end %>
+            <%= submit_tag '検索' %>
+        <% end %>
+    </div>
+  </div>
+</div>
 
-<!--tag検索-->
-<%= render 'public/posts/jenre_search' %>
-<%= render 'public/posts/place_search' %>
-<%= render 'public/posts/category_search' %>
 
 <p>投稿一覧</p>
 <div>
   <%= render 'public/posts/index',posts: @posts %>
 </div>
+
+<script>
+  $('.tab-content>div').hide();
+  $('.tab-content>div').first().slideDown();
+    $('.tab-buttons span').click(function(){
+      var thisclass=$(this).attr('class');
+      $('#lamp').removeClass().addClass('#lamp').addClass(thisclass);
+      $('.tab-content>div').each(function(){
+        if($(this).hasClass(thisclass)){
+          $(this).fadeIn(800);
+        }
+        else{
+          $(this).hide();
+        }
+      });
+    });
+</script>

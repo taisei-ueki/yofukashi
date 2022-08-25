@@ -1,10 +1,10 @@
 
+$(function() {
+  $('.slider').slick({
+  autoplay: true,
+  pauseOnHover: false,
+  fade: true,
+  autoplaySpeed: 2000
+  });
+});
 
-
-//$(document).ready(function(){
-// $(document).on('turbolinks:load', function(){
-//   $('.slider').slick({
-//       autoplay: true,
-//       autoplaySpeed: 2000
-//   });
-// });

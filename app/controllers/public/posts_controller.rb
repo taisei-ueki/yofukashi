@@ -55,6 +55,7 @@ class Public::PostsController < ApplicationController
     # キーワード検索
     @posts = Post.search(params[:keyword])
     
+    
      # タグ検索
     if params[:jenre_ids]
       @posts = []
