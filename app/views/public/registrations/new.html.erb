@@ -1,39 +1,33 @@
 <div class="form-area">
-<h2 class="heading">Sign up</h2>
+<h2 class="border-bottom my-5">新規登録</h2>
 
 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
   
   <div class="devise-field">
     <%= f.text_field :name, autofocus: true, class: "form-box" %>
-    <%= f.label :name %>
+    <%= f.label :ユーザー名 %>
     <span class="focus-line"></span>
   </div>
 
   <div class="devise-field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-box" %>
-    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email", class: "form-box" %>
+    <%= f.label :Eメール %>
     <span class="focus-line"></span>
   </div>
 
   <div class="devise-field">
     <%= f.password_field :password, autocomplete: "new-password", class: "form-box" %>
-    <%= f.label :password %>
-    <span class="focus-line"></span>
-  </div>
- 
-  <div class="devise-field">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-box" %>
-    <%= f.label :password_confirmation %>
+    <%= f.label :パスワード %>
     <span class="focus-line"></span>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up",class: "form-btn" %>
+    <%= f.submit "新規登録",class: "form-btn" %>
   </div>
 <% end %>
 
-<h5 class="border-bottom text-left">会員登録がお済みの方</h5>
+<h5 class="border-bottom text-left mt-5">会員登録がお済みの方</h5>
 <p><%= render "public/shared/links" %>からログインを行ってください</p>
 
 </div>

@@ -4,7 +4,9 @@
       <div class="profile-name"><%= @user.name %></div>
       <div class="profile-introduction"><%= @user.introduction %></div>
       
-    <%= link_to "プロフィールを編集", edit_public_user_path(current_user), class: "link-btn" %>
+      <% if @user == current_user %>
+        <%= link_to "プロフィールを編集", edit_public_user_path(current_user), class: "link-btn" %>
+      <% end %>
   </div>
   
   <main>

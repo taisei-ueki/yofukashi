@@ -1,13 +1,13 @@
 <div class="row">
 <% posts.each do |post| %>
-<div class="col-12 col-md-3">
+<div class="col-12 col-md-4">
   <div class="post-index">
-  <div class="card rounded">
+  <div class="card">
     <div class="card-img-top bd-placeholder-img">
         <%= link_to public_post_path(post.id) do %>
           <% if post.main_images.attached? %>
             <% post.main_images.first(1).each do |main_image| %>
-              <%= image_tag main_image.variant( resize: "400x300^", gravity: "center", crop: "400x300+0+0" ), class: "img-fluid rounded" %>
+              <%= image_tag main_image.variant( resize: "600x500^", gravity: "center", crop: "600x500+0+0" ), class: "img-fluid rounded" %>
             <% end %>
           <% end %>
         <% end %>
@@ -35,7 +35,7 @@
         <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
         <div class="comment">
         <%= link_to public_post_path(post) do %>
-          <i class="fas fa-comment comment-icon"></i><%= post.post_comments.count %>
+          <i class="far fa-comment comment-icon"></i><%= post.post_comments.count %>
         <% end %>
         </div>
       </div>

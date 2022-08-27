@@ -1,5 +1,5 @@
 <div class="post-form">
-<h1>投稿フォーム</h1>
+<h1 class="headline">投稿フォーム</h1>
 <%= form_with model: @post,url: public_posts_path do |f| %>
 
   <%= f.label :main_images ,'画像' %>
@@ -27,6 +27,31 @@
   <span class="focus-box"><i></i></span>
   </div>
   
+   <!--レビュー機能-->
+  <h4 class="headline">夜景レビュー</h4>
+  <div class="form-group">
+  <div class="field" id="all_rate_star">
+    <%= f.label :all_rate, '満足度：' %>
+    <%= f.hidden_field :all_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="rush_rate_star">
+    <%= f.label :rush_rate, '混　雑：' %>
+    <%= f.hidden_field :rush_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="relax_rate_star">
+  <%= f.label :relax_rate, '安らぎ：' %>
+  <%= f.hidden_field :relax_rate, id: :review_star %>
+  </div>
+  
+  <div class="field" id="beautiful_rate_star">
+  <%= f.label :beautiful_rate, '綺麗さ：' %>
+  <%= f.hidden_field :beautiful_rate, id: :review_star %>
+  </div>
+  </div>
+
+  <h4 class="headline">エリア選択</h4>
   <div class='form-group'>
   <%= f.collection_check_boxes(:place_ids, Place.all, :id, :name) do |place| %>
     <div class='form-check'>
@@ -38,6 +63,7 @@
   <% end %>
   </div>
   
+  <h4 class="headline">シーン選択</h4>
  <div class='form-group'>
   <%= f.collection_check_boxes(:jenre_ids, Jenre.all, :id, :name) do |jenre| %>
     <div class='form-check'>
@@ -49,6 +75,7 @@
   <% end %>
   </div>
   
+  <h4 class="headline">カテゴリー選択</h4>
   <div class='form-group'>
   <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
     <div class='form-check'>
@@ -59,29 +86,10 @@
     </div>
   <% end %>
   </div>
-  <!--レビュー機能-->
-  
-  <div class="field" id="all_rate_star">
-    <%= f.label :all_rate, '満足度　：' %>
-    <%= f.hidden_field :all_rate, id: :review_star %>
-  </div>
-  
-  <div class="field" id="rush_rate_star">
-    <%= f.label :rush_rate, '混み具合：' %>
-    <%= f.hidden_field :rush_rate, id: :review_star %>
-  </div>
-  
-  <div class="field" id="relax_rate_star">
-  <%= f.label :relax_rate, '安らぎ　：' %>
-  <%= f.hidden_field :relax_rate, id: :review_star %>
-  </div>
-  
-  <div class="field" id="beautiful_rate_star">
-  <%= f.label :beautiful_rate, '綺麗さ　：' %>
-  <%= f.hidden_field :beautiful_rate, id: :review_star %>
-  </div>
-
-<button type="submit" class="post-btn">投稿する</button>
+ 
+ <div class="actions">
+ <%= f.submit "投稿する",class: "form-btn" %>
+ </div>
 <% end %>
 </div>
 

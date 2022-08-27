@@ -1,23 +1,36 @@
 <%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
 
-<p>プロフィール編集</p>
-<table>
-  <tr>
-    <th></th>
-    <td><%= f.file_field :profile_image, accept: 'image/*' %></td>
-  </tr>
-  <tr>
-    <th></th>
-    <td><%= f.text_field :name %></td>
-  </tr>
-  <tr>
-    <th></th>
-    <td><%= f.text_field :introduction %></td>
-  </tr>
-  <tr>
-    <th></th>
-    <td><%= f.text_field :email ,autofocus: true, autocomplete: "email" %></td>
-  </tr>
-</table>
-<%= f.submit "編集内容を保存する" %>
+
+<div class="col-6 offset-3">
+  <p>プロフィール編集</p>
+
+    <div class="devise-field">
+      <%= f.text_field :email,autofocus: true, autocomplete: "email",class: "form-box" %>
+      <%= f.label :email %>
+     <span class="focus-line"></span>
+    </div> 
+
+    <div class="devise-field">
+      <%= f.text_field :name, class: "form-box" %>
+      <%= f.label :name %>
+    <span class="focus-line"></span>
+    </div>
+    
+    <div class="devise-field">
+       <%= f.text_area :introduction,class: "text-box",rows:4 %>
+       <%= f.label :body ,'コメント' %>
+      <span class="focus-box"><i></i></span>
+    </div> 
+    
+    <div class="devise-field">
+      <%= f.label :profile_image, 'プロフィール画像：' %>
+      <%= f.file_field :profile_image, accept: 'image/*' %>
+    </div> 
+    
+    <div>
+      <%= f.submit "編集内容を保存する",class: "form-btn" %>
+    </div>
+
+
+</div>
 <% end %>

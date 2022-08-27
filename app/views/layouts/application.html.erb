@@ -21,16 +21,12 @@
 
   <body>
     <!-- 'header'の部分テンプレート -->
-    <header>
-      <%= render 'layouts/header' %>
-    </header>
+    <%= render 'layouts/header' %>
     
     <%= yield %>
     
     <!-- 'footer'の部分テンプレート -->
-    <footer>
       <%= render 'layouts/footer' %>
-    </footer>
   <%#= javascript_pack_tag 'slick' %>
   </body>
 </html>

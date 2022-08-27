@@ -20,36 +20,73 @@
  
  
 
- /*header関連*/
+ html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #15202b !important;
+  color: #ffffff !important;
+  height: 100%;
+}
+// header関連
+header {
+　display: flex !important;
+  width: 100%;
+  padding: 30px 4% 10px;
+  background-color: #192734;
+  align-items: center;
+}
+// footer関連
+footer{
+  position: sticky;
+  width: 100%;
+  top: 100vh;
+  background: #192734;
+  text-align: center;
+  padding: 3rem;
+}
+.small{
+  color: #aaaaaa;
+  font-size: 1rem;
+}
+.top-icon{
+ margin: 0; padding: 0;
+ font-size: 20px;
+}
+nav{
+ margin: 0 0 0 auto;
+}
  /**/
  .text-nav {
- 	display: flex;
+  display: flex;
   flex-wrap: wrap;
-  margin:0 0 50px 0;
   list-style: none;
+  
  }
  
  .text-nav .header-text{
- 	display: block;
-  padding:10px 30px;
+  display: block;
+  padding: 10px 30px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   position: relative;
  }
  
  .text-nav .header-text:hover {
-   color:#0481A2;
+   color:#1da1f2;
  }
  
  .text-nav .header-text:after {
- 	 content: '';
+ 	content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 5px;
     border-radius: 50%;
-    background:#0481A2;
+    background:#1da1f2;
     /*アニメーション*/
     transition: all .3s;
     transform: scale(0.04, 1);/*X方向0.04、Y方向1*/
@@ -61,17 +98,16 @@
    transform: scale(0.8, 1);/*X方向0.8、Y方向1にスケール拡大*/
  }
  
- 
  /*devise関連*/
  /**/
 .form-area {
-	width: 60%;
+	width: 55%;
 	margin: 0 auto;
 }
 .devise-field{
   position: relative;
-  width: 80%;
-  margin:40px 3%;
+  width: 90%;
+  margin: 50px 3%;
 }
 
 .form-box{
@@ -80,7 +116,7 @@
   width: 100%;
   letter-spacing: 2px;
   padding-left:6rem;
-	border: 0;
+  border: 0;
 	border-bottom: 1px solid #cccccc;
 	background-color: transparent;
 }
@@ -94,7 +130,7 @@
 	width: 0;
 	height: 2px;
 	transition: 0.4s;
-	background-color: #eb5d7e;
+	background-color: #1da1f2;
 }
 .form-box:focus ~ .focus-line{
   width: 100%;
@@ -115,11 +151,11 @@
   font-size: 12px;
 	top: -16px;
 	transition: 0.3s;
-	color: #eb5d7e;
+	color: #1da1f2;
 }
 
 .form-btn {
-	margin: 40px;
+	margin: 30px;
 	display: inline-block;
 	width: 30%;
 	line-height: 3em;
@@ -149,4 +185,43 @@
 .form-btn:focus:hover {
 	color: #ec407a;
 }
+.actions{
+    text-align: center;
+}
 
+.link-btn {
+  　text-decoration: none;
+    background: #192734;
+    color: #8899a6;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    transition: 0.3s ease-in-out;
+    font-weight: 500;
+    z-index:0;
+    top: 30px;
+}
+.link-btn:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    display: block;
+    background: #1da1f2;
+    transition: .3s;
+    left:0;
+}
+
+.link-btn:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+.link-btn:hover:before {
+    width: 100%;
+    z-index: -1;
+}

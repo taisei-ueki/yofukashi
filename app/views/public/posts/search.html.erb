@@ -6,6 +6,7 @@
     <span class='content4'>カテゴリーから探す</span>
     <div id='lamp' class='content1'></div>
   </div>
+  
   <div class='tab-content'>
     <div class='content1'>
       <%= form_with(url: search_public_posts_path,method: :get ) do |form| %>
@@ -14,12 +15,11 @@
       <% end %>
     </div>
     <div class='content2'>
-      <h5></h5>
       <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
             <% Jenre.all.each do |t| %>
                 <div class="item"><%= check_box :jenre_ids, t.name %><%= t.name %></div>
             <% end %>
-            <%= submit_tag '検索' %>
+            <%= submit_tag '検索',class: "form-btn" %>
         <% end %>
     </div>
     <div class='content3'>
@@ -27,7 +27,7 @@
             <% Place.all.each do |t| %>
                 <div class="item"><%= check_box :place_ids, t.name %><%= t.name %></div>
             <% end %>
-            <%= submit_tag '検索' %>
+            <%= submit_tag '検索',class: "form-btn" %>
         <% end %>
     </div>
     <div class='content4'>
@@ -35,11 +35,14 @@
             <% Category.all.each do |t| %>
                 <div class="item"><%= check_box :category_ids, t.name %><%= t.name %></div>
             <% end %>
-            <%= submit_tag '検索' %>
+           
+            <%= submit_tag '検索',class: "form-btn" %>
+            
         <% end %>
     </div>
   </div>
 </div>
+
 
 
 <p>投稿一覧</p>

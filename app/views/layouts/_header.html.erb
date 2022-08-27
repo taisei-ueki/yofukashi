@@ -1,7 +1,14 @@
 <header>
   <!--ユーザのヘッダー-->
   <% if user_signed_in? %>
-    <ul class="text-nav">
+
+      <h3 class="top-icon">
+        <%= link_to root_path do %>
+        Yofukashi
+        <% end %>
+      </h3>
+    <nav>
+     <ul class="text-nav">
       <li><%= link_to 'はじめに',about_path, class: "header-text"%></li>
       
       <li><%= link_to "マイページ", public_user_path(current_user), class: "header-text" %></li>
@@ -20,6 +27,7 @@
         <% end %>   
       </li>
     </ul>
+  </nav>
   <!--アドミンのヘッダー-->
   <% elsif admin_signed_in? %>
     <ul class="text-nav">
@@ -35,7 +43,7 @@
       
       <li><%= link_to 'ログイン',new_user_session_path, class: "header-text" %></li>
       
-      <li><%= link_to 'サインイン',new_user_registration_path, class: "header-text" %></li>
+      <li><%= link_to '新規登録',new_user_registration_path, class: "header-text" %></li>
       
       <li><%= link_to 'はじめに',about_path, class: "header-text"%></li>
     </ul>
