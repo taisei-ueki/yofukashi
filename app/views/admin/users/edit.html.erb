@@ -1,5 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      
 <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
-<table>
+<table width="100%">
   <h3>ユーザー編集</h3>
   <tbody>
     <tr>
@@ -8,15 +12,15 @@
     </tr>
     <tr>
       <td>ユーザーネーム</td>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name,:size=>"40" %></td>
     </tr>
     <tr>
       <td>イントロダクション</td>
-      <td><%= f.text_area :introduction %></td>
+      <td><%= f.text_area :introduction,:size=>"40" %></td>
     </tr>
     <tr>
       <td>メールアドレス</td>
-      <td><%= f.text_field :email %></td>
+      <td><%= f.text_field :email,:size=>"40" %></td>
     </tr>
     <tr>
       <td>ユーザーステータス</td>
@@ -31,7 +35,10 @@
     </tr>
   </tbody>
 </table>
-<div class="user-btn">
-  <%= f.submit '編集内容を保存'%>
+<div class=>
+  <%= f.submit '編集内容を保存',class: "btn btn-primary w-100"%>
 </div>
 <% end %>
+</div>
+</div>
+</div>

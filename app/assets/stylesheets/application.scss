@@ -20,7 +20,7 @@
  
  
 
- html {
+html {
   height: 100%;
 }
 body {
@@ -32,11 +32,18 @@ body {
 }
 // header関連
 header {
-　display: flex !important;
   width: 100%;
   padding: 30px 4% 10px;
   background-color: #192734;
   align-items: center;
+  .header-wapper {
+    display: flex;
+    .top-icon{
+      text-decoration: none;
+      color: #ffffff !important;
+        
+    }
+  }
 }
 // footer関連
 footer{
@@ -117,8 +124,9 @@ nav{
   letter-spacing: 2px;
   padding-left:6rem;
   border: 0;
-	border-bottom: 1px solid #cccccc;
-	background-color: transparent;
+  border-bottom: 1px solid #cccccc;
+  background-color: transparent;
+  color: #ffffff;
 }
 .form-box:focus{
   outline: none;
@@ -189,6 +197,21 @@ nav{
     text-align: center;
 }
 
+.comment-area{
+    margin-top: 5rem;
+}
+.btn-none{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #FFF;
+    width: 300px;
+    height: 30px;
+}
 .link-btn {
   　text-decoration: none;
     background: #192734;
@@ -198,7 +221,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
-    max-width: 240px;
+    max-width: 300px;
     padding: 10px 25px;
     transition: 0.3s ease-in-out;
     font-weight: 500;

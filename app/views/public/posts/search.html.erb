@@ -1,3 +1,4 @@
+<h3 class="headline">検索フォーム</h3>
 <div class='tabs'>
   <div class='tab-buttons'>
     <span class='content1'>キーワードから探す</span>
@@ -10,42 +11,58 @@
   <div class='tab-content'>
     <div class='content1'>
       <%= form_with(url: search_public_posts_path,method: :get ) do |form| %>
-        <%= form.text_field :keyword %>
-        <%= form.submit "検索" %>
+      <div class="search-field">
+        <%= form.text_field :keyword, placeholder:"キーワードを入力",class: "form-box" %>
+        <span class="focus-line"></span>
+      </div>  
+      <div class="link-btn">
+        <%= form.submit "検索する",class: "btn-none" %>
+      </div>
       <% end %>
     </div>
     <div class='content2'>
       <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
-            <% Jenre.all.each do |t| %>
-                <div class="item"><%= check_box :jenre_ids, t.name %><%= t.name %></div>
-            <% end %>
-            <%= submit_tag '検索',class: "form-btn" %>
-        <% end %>
+        <div class="item_list">
+          <% Jenre.all.each do |t| %>
+            <div class="item"><%= check_box :jenre_ids, t.name %><%= t.name %></div>
+          <% end %>
+        </div>
+        <div class="link-btn">
+          <%= submit_tag "検索する",class: "btn-none" %>
+        </div>
+      <% end %>
     </div>
     <div class='content3'>
       <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
-            <% Place.all.each do |t| %>
-                <div class="item"><%= check_box :place_ids, t.name %><%= t.name %></div>
-            <% end %>
-            <%= submit_tag '検索',class: "form-btn" %>
-        <% end %>
+        <div class="item_list">
+          <% Place.all.each do |t| %>
+            <div class="item"><%= check_box :place_ids, t.name %><%= t.name %></div>
+          <% end %>
+          
+        </div>
+        <div class="link-btn">
+          <%= submit_tag "検索する",class: "btn-none" %>
+       </div>
+      <% end %>
     </div>
     <div class='content4'>
       <%= form_tag({controller:"posts",action:"search"}, method: :get,class: "form-class") do %>
-            <% Category.all.each do |t| %>
-                <div class="item"><%= check_box :category_ids, t.name %><%= t.name %></div>
-            <% end %>
-           
-            <%= submit_tag '検索',class: "form-btn" %>
-            
-        <% end %>
+        <div class="item_list">
+          <% Category.all.each do |t| %>
+            <div class="item"><%= check_box :category_ids, t.name %><%= t.name %></div>
+          <% end %>
+        </div>
+        <div class="link-btn">
+          <%= submit_tag "検索する",class: "btn-none" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
 
 
-<p>投稿一覧</p>
+<h3 class="headline">投稿一覧</h3>
 <div>
   <%= render 'public/posts/index',posts: @posts %>
 </div>

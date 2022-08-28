@@ -15,14 +15,12 @@
     <div class="card-body">
       <!--タグ関連-->
       <div class="tag">
-      <% post.jenres.each do |jenre| %>
-       <span class="name-tag"><%= jenre.name %></span>
-      <% end %>
-      
       <% post.places.each do |place| %>
        <span class="name-tag"><%= place.name %></span>
       <% end %>
-      
+      <% post.jenres.each do |jenre| %>
+       <span class="name-tag"><%= jenre.name %></span>
+      <% end %>
       <% post.categories.each do |category| %>
        <span class="name-tag"><%= category.name %></span>
       <% end %>
@@ -35,7 +33,7 @@
         <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
         <div class="comment">
         <%= link_to public_post_path(post) do %>
-          <i class="far fa-comment comment-icon"></i><%= post.post_comments.count %>
+          <i class="far fa-comment comment-icon"></i><span class="icon"><%= post.post_comments.count %></span> 
         <% end %>
         </div>
       </div>

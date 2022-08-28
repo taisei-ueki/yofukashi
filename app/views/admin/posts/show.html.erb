@@ -1,84 +1,103 @@
-<h2>投稿詳細</h2>
 
-<table>
-  <tr>
-    <td>
-      <% if @post.main_images.attached? %>
-        <% @post.main_images.each do |main_image| %>
-          <%= image_tag main_image.variant(resize_to_limit: [100, 100]) %>
-        <% end %>
-      <% end %>
-    </td>
-    <td><%= @post.title %></td>
-    <td><%= @post.body %></td>
-    <td><%= @post.address %></td>
-    
-    
-      
-    <td><button><%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' } %></button></td>
-   
-    
-    <!--レビュー機能-->
-    <td><div id="star-all-rate<%= @post.id%>"></div></td>
-    <td><div id="star-rush-rate<%= @post.id%>"></div></td>
-    <td><div id="star-relax-rate<%= @post.id%>"></div></td>
-    <td><div id="star-beautiful-rate<%= @post.id%>"></div></td>
-    
-  </tr>
-</table>
-
-<!--タグ関連-->
+    <div class="row">
+     <div class="col-6 offset-1">
+      <div class="img-box">
+     <div class="slider-show">
+            <% if @post.main_images.attached? %>
+              <% @post.main_images.each do |main_image| %>
+                <%= image_tag main_image, class: "show-image" %>
+              <% end %>
+            <% end %>
+     </div>
+     </div>
+    </div>
+    <div class="col-4 ml-2">
+        <h2><%= @post.title %></h2>
+        <div class="mt-2">所在地：<%= @post.address %></div>
+        <div class="mt-2 d-flex">
+            <%= link_to admin_user_path(@post.user) do %>
+            <%= image_tag @post.user.get_profile_image,class: "post-profile-img" %>
+            <%= @post.user.name %>
+            <% end %>
+           <div class="ml-3">
+             <%= link_to "投稿を削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' },class: "btn btn-outline-danger btn-sm" %>
+           </div>
+        </div>
+        
+        <!--タグ関連-->
     <div class="tag">
       <% @post.jenres.each do |jenre| %>
-       <span><%= jenre.name %></span>
+       <span class="name-tag">#<%= jenre.name %></span>
       <% end %>
       
       <% @post.places.each do |place| %>
-       <span><%= place.name %></span>
+       <span class="name-tag">#<%= place.name %></span>
       <% end %>
       
       <% @post.categories.each do |category| %>
-       <span><%= category.name %></span>
+       <span class="name-tag">#<%= category.name %></span>
       <% end %>
     </div>
+    
+    
+    <h4 class="border-bottom mt-3">詳細</h4>   
+    <div class="mt-1"><%= @post.body %></div>
+    
+    
+    
+    
+    <!--レビュー機能-->
+    <h4 class="border-bottom mt-3">評価</h4>
+    <div class="mt-1" id="star-all-rate<%= @post.id%>">満足度：</div>
+    <div class="mt-1" id="star-rush-rate<%= @post.id%>">混　雑：</div>
+    <div class="mt-1" id="star-relax-rate<%= @post.id%>">安らぎ：</div>
+    <div class="my-1" id="star-beautiful-rate<%= @post.id%>">綺麗さ：</div>
+  
+
 
 <!--コメント一覧-->
-<div id="comments-area">
- <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
-</div>
+  <div id="comments-area mt-3">
+   <%= render 'public/post_comments/post_comment', post: @post, post_comment: @post_comment %>
+  </div>
+        
+        
+        </div>
+   </div>
+
+    
 
 <!--レビュー機能JavaScript-->
-     <script>
-        $('#star-all-rate<%= @post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf  : '<%= asset_path('star-half.png') %>',
-          readOnly: true,
-          score: <%= @post.all_rate %>,
-        });
-         $('#star-rush-rate<%= @post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf  : '<%= asset_path('star-half.png') %>',
-          readOnly: true,
-          score: <%= @post.rush_rate %>,
-        });
-         $('#star-relax-rate<%= @post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf  : '<%= asset_path('star-half.png') %>',
-          readOnly: true,
-          score: <%= @post.relax_rate %>,
-        });
-         $('#star-beautiful-rate<%= @post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf  : '<%= asset_path('star-half.png') %>',
-          readOnly: true,
-          score: <%= @post.beautiful_rate %>,
-        });
-      </script>
+ <script>
+    $('#star-all-rate<%= @post.id%>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf  : '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= @post.all_rate %>,
+    });
+     $('#star-rush-rate<%= @post.id%>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf  : '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= @post.rush_rate %>,
+    });
+     $('#star-relax-rate<%= @post.id%>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf  : '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= @post.relax_rate %>,
+    });
+     $('#star-beautiful-rate<%= @post.id%>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf  : '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= @post.beautiful_rate %>,
+    });
+  </script>

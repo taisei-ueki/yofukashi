@@ -1,6 +1,7 @@
 <div class="row">
 <% posts.each do |post| %>
 <div class="col-12 col-md-3">
+  <div class="post-index">
   <div class="card rounded">
     <div class="card-img-top bd-placeholder-img">
           <%= link_to admin_post_path(post.id) do %>
@@ -16,14 +17,12 @@
       <div class="card-text">
         <!--タグ関連-->
     <div class="tag">
-      <% post.jenres.each do |jenre| %>
-       <span class="name-tag">#<%= jenre.name %></span>
-      <% end %>
-      
       <% post.places.each do |place| %>
        <span class="name-tag">#<%= place.name %></span>
       <% end %>
-      
+      <% post.jenres.each do |jenre| %>
+       <span class="name-tag">#<%= jenre.name %></span>
+      <% end %>
       <% post.categories.each do |category| %>
        <span class="name-tag">#<%= category.name %></span>
       <% end %>
@@ -40,7 +39,8 @@
           readOnly: true,
           score: <%= post.all_rate %>,
         });
-      </script>  
+      </script> 
+      </div>
     </div>
   </div>      
 </div>

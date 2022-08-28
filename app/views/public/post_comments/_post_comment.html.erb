@@ -1,14 +1,18 @@
  <% if post.post_comments.present? %>
-  <p>コメント件数：<%= post.post_comments.count %></p>
+  <p>コメント件数：<%= post.post_comments.count %>件</p>
+  
     <% post.post_comments.each do |post_comment| %>
-      <%= post_comment.user.name %>
+    <div class="mt-2">
+      <%= image_tag post_comment.user.get_profile_image,class: "post-profile-img" %>
+      <strong><%= post_comment.user.name %></strong>：
+      <%= post_comment.comment %><br />
+      <div class="d-flex">
       <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-      <%= post_comment.comment %>
       <% if post_comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", public_post_post_comment_path(post, post_comment), method: :delete,remote: true, data: {confirm: "本当に削除しますか？"} %>
-      </div>
+        <%= link_to "削除する", public_post_post_comment_path(post, post_comment), method: :delete,remote: true, data: {confirm: "本当に削除しますか？"},class: "comment-delete" %>
       <% end %>
+      </div>
+    </div>
     <% end %>
   <% else %>
   <p>コメントはまだありません</p>
