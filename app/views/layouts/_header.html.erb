@@ -19,6 +19,12 @@
           </li>
           
           <li>
+            <%= link_to new_public_post_path, class: "header-text" do %>
+              <i class="fas fa-edit"></i>投稿する
+              <% end %>
+          </li>
+          
+          <li>
             <%= link_to public_posts_path, class: "header-text" do %>
               <i class="fas fa-users"></i>みんなの投稿
             <% end %>
@@ -28,12 +34,6 @@
             <%= link_to rank_public_posts_path, class: "header-text" do %>
               <i class="fas fa-crown"></i>ランキング
             <% end %>
-          </li>
-          
-          <li>
-            <%= link_to new_public_post_path, class: "header-text" do %>
-              <i class="fas fa-edit"></i>投稿する
-              <% end %>
           </li>
           
           <li>
