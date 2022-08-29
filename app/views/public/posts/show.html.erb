@@ -11,26 +11,28 @@
       </div>
     </div>
   </div>
-  <div class="col-4 ml-2">
-    <h2><%= @post.title %></h2>
-    <div class="mt-2">所在地：<%= @post.address %></div>
-    <div class="mt-2 d-flex">
+  <div class="col-4 ml-3">
+    <h2 class="mt-3"><%= @post.title %></h2>
+    <div class="mt-4">所在地：<%= @post.address %></div>
+    <div class="mt-3 d-flex">
       <%= link_to public_user_path(@post.user) do %>
         <%= image_tag @post.user.get_profile_image,class: "post-profile-img" %>
-        <%= @post.user.name %>
+        <span class="post-profile-name"><%= @post.user.name %></span>
       <% end %>
-    <div class="ml-3" id="favorite_<%= @post.id %>">
-      <%= render 'public/favorites/favorite', post: @post %>
-    </div>
-     <% if @post.user == current_user %>
+      <div class="ml-3" id="favorite_<%= @post.id %>">
+        <%= render 'public/favorites/favorite', post: @post %>
+      </div>
+      <% if @post.user == current_user %>
        <div class="ml-3">
-         <%= link_to "投稿を削除", public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' },class: "btn btn-outline-danger btn-sm" %>
+         <%= link_to public_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' },class: "btn btn-outline-danger btn-sm" do %>
+          <i class="fas fa-trash-alt"></i>削除
+         <% end %>
        </div>
-     <% end %>
+      <% end %>
     </div>
         
   <!--タグ関連-->
-    <div class="tag">
+    <div class="tag mt-3">
       <% @post.jenres.each do |jenre| %>
        <span class="name-tag">#<%= jenre.name %></span>
       <% end %>
@@ -44,11 +46,11 @@
       <% end %>
     </div>
 
-    <h4 class="border-bottom mt-3">詳細</h4>   
-    <div class="mt-1"><%= @post.body %></div>
+    <h4 class="border-bottom mt-4">詳細</h4>   
+    <div class="mt-2"><%= @post.body %></div>
 
 <!--レビュー機能-->
-    <h4 class="border-bottom mt-3">評価</h4>
+    <h4 class="border-bottom mt-5">評価</h4>
     <div class="mt-1" id="star-all-rate<%= @post.id%>">満足度：</div>
     <div class="mt-1" id="star-rush-rate<%= @post.id%>">混　雑：</div>
     <div class="mt-1" id="star-relax-rate<%= @post.id%>">安らぎ：</div>

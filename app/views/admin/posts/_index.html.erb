@@ -7,7 +7,7 @@
             <%= link_to admin_post_path(post.id) do %>
               <% if post.main_images.attached? %>
                 <% post.main_images.first(1).each do |main_image| %>
-                  <%= image_tag main_image, class: "img-fluid rounded" %>
+                  <%= image_tag main_image.variant( resize: "600x500^", gravity: "center", crop: "600x500+0+0" ), class: "img-fluid rounded" %>
                 <% end %>
               <% end %>
             <% end %>
