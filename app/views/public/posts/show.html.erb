@@ -102,4 +102,15 @@
       readOnly: true,
       score: <%= @post.beautiful_rate %>,
     });
+    
+    $(function() {
+  $('.slider-show').slick({
+  autoplay: true,
+  pauseOnHover: false,
+  dots: true,
+  fade: true,
+  autoplaySpeed: 3000
+  });
+});
+    
  </script>
