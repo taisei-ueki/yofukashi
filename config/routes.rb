@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :users, only: [:show,:edit,:update]
     
-    resources :posts do
+    resources :posts, except: [:edit] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       collection do
@@ -35,8 +35,6 @@ Rails.application.routes.draw do
        get 'rank'
       end
     end
-
-    
   end
 
 end

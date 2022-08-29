@@ -1,5 +1,7 @@
 <div class="form-area">
   <h2 class="border-bottom my-5">ログイン</h2>
+　<%# deivseのフラッシュメッセージを表示 %>
+  <p class="alert"><%= alert %></p>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -22,6 +24,5 @@
 
 <h5 class="border-bottom text-left mt-5">会員登録がお済みでない方</h5>
 <p><%= render "public/shared/links" %>から新規登録を行ってください</p>
-
 
 </div>

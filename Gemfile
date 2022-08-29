@@ -66,3 +66,4 @@ gem "net-imap"
 
 gem 'devise'
 gem 'ransack'
+gem 'rails-i18n'

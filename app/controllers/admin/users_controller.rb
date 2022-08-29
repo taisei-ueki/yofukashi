@@ -21,6 +21,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = '会員情報が更新されました。'
     else
       render :edit
+      flash[:alert] = "会員情報が更新されませんでした"
     end
   end
   

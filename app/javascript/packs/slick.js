@@ -4,7 +4,7 @@ $(function() {
   autoplay: true,
   pauseOnHover: false,
   fade: true,
-  autoplaySpeed: 2000
+  autoplaySpeed: 3000
   });
 });
 
@@ -14,6 +14,6 @@ $(function() {
   pauseOnHover: false,
   dots: true,
   fade: true,
-  autoplaySpeed: 2000
+  autoplaySpeed: 3000
   });
 });

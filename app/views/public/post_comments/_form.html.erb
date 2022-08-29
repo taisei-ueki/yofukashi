@@ -1,10 +1,10 @@
- <%= form_with url: public_post_post_comments_path(post), local: false do |f| %>
+<%= form_with url: public_post_post_comments_path(post), local: false do |f| %>
  <div class="comment-field">
-    <%= f.text_area :comment,class: "text-box", rows: 5 %>
-    <%= f.label :comment ,'コメント' %>
-    <span class="focus-box"><i></i></span>
+  <%= f.text_area :comment,class: "text-box", rows: 5 %>
+  <%= f.label :comment ,'コメント' %>
+  <span class="focus-box"><i></i></span>
  </div>
  <div class="link-btn">
-    <%= f.submit "送信する",class: "btn-none" %>
+  <%= f.submit "送信する",class: "btn-none" %>
  </div>
-  <% end %>  
+<% end %>  

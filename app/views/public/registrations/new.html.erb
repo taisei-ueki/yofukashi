@@ -5,12 +5,6 @@
   <%= render "public/shared/error_messages", resource: resource %>
   
   <div class="devise-field">
-    <%= f.text_field :name, autofocus: true, class: "form-box" %>
-    <%= f.label :ユーザー名 %>
-    <span class="focus-line"></span>
-  </div>
-
-  <div class="devise-field">
     <%= f.email_field :email, autocomplete: "email", class: "form-box" %>
     <%= f.label :Eメール %>
     <span class="focus-line"></span>
@@ -21,6 +15,13 @@
     <%= f.label :パスワード %>
     <span class="focus-line"></span>
   </div>
+  
+   <div class="devise-field">
+    <%= f.text_field :name, autofocus: true, class: "form-box" %>
+    <%= f.label :ユーザー名 %>
+    <span class="focus-line"></span>
+  </div>
+
 
   <div class="actions">
     <%= f.submit "新規登録",class: "form-btn" %>

@@ -18,6 +18,12 @@ class Post < ApplicationRecord
   
   validates :title,presence:true
   validates :body, presence:true,length:{maximum:200}
+  validates :address, presence: true
+  
+  validates :all_rate, numericality: true
+  validates :rush_rate, numericality: true
+  validates :relax_rate, numericality: true
+  validates :beautiful_rate, numericality: true
   
   has_many_attached :main_images
   
@@ -25,7 +31,8 @@ class Post < ApplicationRecord
       favorites.exists?(user_id: user.id)
   end
   
-  def self.search(search)
+  # キーワード検索
+  def self.search(search) 
    if search != ""
      Post.where(['address LIKE(?) OR title LIKE(?)',"%#{search}%","%#{search}%"]) 
    else
@@ -33,7 +40,7 @@ class Post < ApplicationRecord
    end
   end
   
-  def self.create_favorite_ranks #Noteクラスからデータを取ってくる処理なのでクラスメソッド！
+  def self.create_favorite_ranks #postクラスからデータを取ってくる処理なのでクラスメソッド！
     Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
   

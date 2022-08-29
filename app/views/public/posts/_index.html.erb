@@ -1,57 +1,59 @@
 <div class="row">
-<% posts.each do |post| %>
-<div class="col-12 col-md-4">
-  <div class="post-index">
-  <div class="card">
-    <div class="card-img-top bd-placeholder-img">
-        <%= link_to public_post_path(post.id) do %>
-          <% if post.main_images.attached? %>
-            <% post.main_images.first(1).each do |main_image| %>
-              <%= image_tag main_image.variant( resize: "600x500^", gravity: "center", crop: "600x500+0+0" ), class: "img-fluid rounded" %>
+  <% posts.each do |post| %>
+    <div class="col-12 col-md-4">
+      <div class="post-index">
+        <div class="card">
+          <div class="card-img-top bd-placeholder-img">
+            <%= link_to public_post_path(post.id),data: {"turbolinks" => false} do %>
+              <% if post.main_images.attached? %>
+                <% post.main_images.first(1).each do |main_image| %>
+                  <%= image_tag main_image.variant( resize: "600x500^", gravity: "center", crop: "600x500+0+0" ), class: "image img-fluid rounded" %>
+                <% end %>
+              <% end %>
             <% end %>
-          <% end %>
-        <% end %>
-    </div>
-    <div class="card-body">
-      <!--タグ関連-->
-      <div class="tag">
-      <% post.places.each do |place| %>
-       <span class="name-tag"><%= place.name %></span>
-      <% end %>
-      <% post.jenres.each do |jenre| %>
-       <span class="name-tag"><%= jenre.name %></span>
-      <% end %>
-      <% post.categories.each do |category| %>
-       <span class="name-tag"><%= category.name %></span>
-      <% end %>
-    </div>
+          </div>
+          
+          <div class="card-body">
+            <!--タグ関連-->
+            <div class="tag">
+            <% post.places.each do |place| %>
+             <span class="name-tag"><%= place.name %></span>
+            <% end %>
+            <% post.jenres.each do |jenre| %>
+             <span class="name-tag"><%= jenre.name %></span>
+            <% end %>
+            <% post.categories.each do |category| %>
+             <span class="name-tag"><%= category.name %></span>
+            <% end %>
+          </div>
       
-      <h5 class="card-title"><%= post.title %></h5>
+          <h5 class="card-title"><%= post.title %></h5>
       
-      <div class="card-icon">
-        <div id="star-all-rate<%= post.id%>">満足度：</div>
-        <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
-        <div class="comment">
-        <%= link_to public_post_path(post) do %>
-          <i class="far fa-comment comment-icon"></i><span class="icon"><%= post.post_comments.count %></span> 
-        <% end %>
-        </div>
-      </div>
+          <div class="card-icon">
+            <div id="star-all-rate<%= post.id%>">満足度：</div>
+            <div id="favorite_<%= post.id %>"><%= render 'public/favorites/favorite', post: post %></div>
+            <div class="comment">
+              <%= link_to public_post_path(post) do %>
+                <i class="far fa-comment comment-icon"></i><span class="icon"><%= post.post_comments.count %></span> 
+              <% end %>
+            </div>
+          </div>
      
+          <script>
+          //raty
+            $('#star-all-rate<%= post.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              starHalf  : '<%= asset_path('star-half.png') %>',
+              readOnly: true,
+              score: <%= post.all_rate %>,
+            });
+          </script>
       
-      <script>
-        $('#star-all-rate<%= post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf  : '<%= asset_path('star-half.png') %>',
-          readOnly: true,
-          score: <%= post.all_rate %>,
-        });
-      </script>
-      </div>
+          </div>
+        </div>
+      </div>      
     </div>
-  </div>      
-</div>
-<% end %>
+  <% end %>
 </div>

@@ -23,6 +23,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to public_post_path(@post)
     else
+      flash[:alert] = "投稿できませんでした。すべての項目を入力しもう一度投稿してください"
       render :new
     end
   end

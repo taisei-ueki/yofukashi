@@ -29,6 +29,12 @@ body {
   background-color: #15202b !important;
   color: #ffffff !important;
   height: 100%;
+  font-family: zen-kaku-gothic-antique, sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+.alert {
+  color: #ff2020;
 }
 // header関連
 header {
@@ -41,6 +47,9 @@ header {
     .top-icon{
       text-decoration: none;
       color: #ffffff !important;
+      font-family: ibm-plex-mono,sans-serif;
+      font-weight: 100;
+      font-style: italic;
         
     }
   }
@@ -106,7 +115,7 @@ nav{
  }
  
  /*devise関連*/
- /**/
+// フォーム
 .form-area {
 	width: 55%;
 	margin: 0 auto;
@@ -116,7 +125,6 @@ nav{
   width: 90%;
   margin: 50px 3%;
 }
-
 .form-box{
   font: 15px/24px sans-serif;
   box-sizing: border-box;
@@ -162,6 +170,7 @@ nav{
 	color: #1da1f2;
 }
 
+// ログインボタン
 .form-btn {
 	margin: 30px;
 	display: inline-block;
@@ -170,18 +179,18 @@ nav{
 	cursor: pointer;
 	user-select: none;
 	transition: box-shadow 0.2s, transform 0.2s;
-	color: #5252a5;
+	color: #cccccc;
 	border-width: 0;
 	border-style: solid;
 	border-radius: 12% / 50%;
-	background: transparent;
+	background: #1da1f2;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 .form-btn:hover {
 	-webkit-transform: scale(1.02);
 	        transform: scale(1.02);
 	box-shadow: 0 1px 6px 1px rgba(0, 0, 0, 0.2);
-	color: #ec407a;
+	color: #ffffff;
 }
 .form-btn:active {
 	transition-duration: 0.05s;
@@ -193,12 +202,10 @@ nav{
 .form-btn:focus:hover {
 	color: #ec407a;
 }
+
+// ボタン
 .actions{
     text-align: center;
-}
-
-.comment-area{
-    margin-top: 5rem;
 }
 .btn-none{
     -webkit-appearance: none;

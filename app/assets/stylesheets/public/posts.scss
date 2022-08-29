@@ -2,26 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
+// タイトル下線
 .headline{
   border-bottom: 2px solid #8899a6;
-  margin: 1rem 0.5rem 1rem 0.5rem;
+  margin: 2rem 0.5rem 1rem 0.5rem;
 }
-
 // プレビュー
 #post_images > img{
   height: 100px;
   width: 100px;
   object-fit: cover;
 }
+
 // カード
 .post-index{
 	margin: 0.5rem;
 }
-
 .card-img-top {
-    max-width: 100%;
-    object-fit: cover;
+  max-width: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+  transition: .3s;
+}
+.card-img-top:hover{
+  filter: brightness(150%);
+  transform: scale(1.1);
+}
+.card{
+  overflow: hidden;
 }
 .card-body{
 	position: absolute;
@@ -40,7 +48,7 @@
 .show-image{
 	width: 100%;
 }
-
+// アイコン
 .icon{
   text-decoration: none;
   color: #98a9b6;
@@ -53,7 +61,6 @@
  color: #98a9b6; 
  margin-left: 10px;
  }
-
 .unlike-btn {
  font-size: 25px;
  color: #f05060;
@@ -66,8 +73,6 @@
   color: #98a9b6;
   margin-left: 15px;
  }
-
-
 // tag関連
 .name-tag {
 	  font-size: 12px;
@@ -77,6 +82,7 @@
     margin-right: 0.5rem;
     border-radius: 5px;
 }
+
 // showページ
 .img-box{
   position: sticky;
@@ -94,13 +100,15 @@
   height: 40px;
   border-radius: 50%;
 }
-// コメント
+// コメント削除
 .comment-delete{
   text-decoration: none;
   margin-left: 2rem;
   color: #1da1f2;
 }
-
+.comment-area{
+    margin-top: 5rem;
+}
 
 //投稿フォーム
 .post-form {
@@ -112,6 +120,7 @@
   width: 80%;
   margin: 40px 3%;
 }
+// フォーム（エリア）
 .text-box {
   font: 15px/24px sans-serif;
   box-sizing: border-box;
@@ -121,6 +130,7 @@
   transition: 0.4s;
   border: 1px solid #cccccc;
   background: transparent;
+  color: #ffffff;
 }
 .text-box:focus {
   outline: none;
@@ -188,7 +198,7 @@
 }
 .comment-field{
   position: relative;
-  width: 90%;
+  width: 100%;
   margin-top: 25px;
 }
 
@@ -212,9 +222,18 @@
 	margin: 1rem 1rem 1rem 8rem;
 }
 
+// ランキング機能
+.ranking{
+  font-size: 40px;
+  margin: 10px;
+  color: #eb5d7e;
+}
+.crown{
+  color: #c49e54;
+}
 
-// search
 
+// search機能
 .search-field{
   position: relative;
   margin: 20px 3%;

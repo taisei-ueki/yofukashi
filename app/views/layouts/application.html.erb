@@ -14,8 +14,18 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>-->
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    
+  
+    <!--adobe-font-->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'npe6luu',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
 
   </head>
 
@@ -27,6 +37,5 @@
     
     <!-- 'footer'の部分テンプレート -->
       <%= render 'layouts/footer' %>
-  <%#= javascript_pack_tag 'slick' %>
   </body>
 </html>
